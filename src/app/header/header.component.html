@@ -1,0 +1,9 @@
+<header>    
+    <div class="logo" (click)="toogleSideBar()">
+        <i [inlineSVG] = "'assets/menu.svg'"></i>
+        <img src="assets/yourJube.png" alt="">
+    </div>
+    <app-search-box class="search__videos"></app-search-box>
+    <app-user-features-bar></app-user-features-bar>
+</header>
+<app-side-bar *ngIf="!hide"></app-side-bar>

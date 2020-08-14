@@ -1,0 +1,168 @@
+.video__container  
+    .video-player
+        video
+            width: 100%
+    .video-detail__container
+        width: 100%
+        .video__headline
+            padding: 20px 0 8px 0
+            border-bottom: 1px solid #404040
+            h2 
+                font-size: 18px
+                color: white
+                font-weight: 400
+                line-height: 24px
+                margin: 0
+                padding: 0
+            .features__container
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                align-items: center
+                span 
+                    font-size: 14px
+                    color: #aaaaaa
+                .video__features
+                    display: flex
+                    flex-direction: row
+                    .feature__item
+                        display: flex
+                        align-items: center
+                        color: white
+                        cursor: pointer
+                        i
+                            width: 20px
+                            height: 20px
+                            padding: 8px
+                        span
+                            font-size: 13px
+                            letter-spacing: 0.007px
+                            color: rgb(170,170,170)
+                            cursor: pointer
+                            font-weight: 500
+        .video__detail
+            padding-bottom: 16px
+            margin-bottom: 24px
+            border-bottom: 1px solid #404040
+            .author__detail
+                display: flex
+                padding-top: 16px
+                margin-bottom: 12px
+                justify-content: space-between
+                color: white
+                align-items: center
+                .author
+                    height: 48px
+                    display: flex
+                    flex-direction: row
+                    img
+                        border-radius: 50%
+                        object-fit: cover
+                        height: 100%
+                        width: 48px
+                        margin-right: 16px
+                    .description
+                        display: flex
+                        flex-direction: column
+                        justify-content: center            
+                        a 
+                            text-decoration: none
+                            color: white 
+                        span 
+                            color: #aaaaaa
+                        a,span 
+                            font-size: 14px
+                            
+                .subscribe-btn
+                    font-size: 14px
+                    font-weight: 500
+                    color: white
+                    background-color: #cc0000
+                    width: 105px
+                    height: 36px
+                    margin: 0 4px
+                    padding: 10px 16px
+                    border-radius: 2px
+                    
+            .description__container
+                margin-left: 64px
+                font-size: 14px
+                font-weight: 400
+                line-height: 21px
+                color: white
+    .comment__container
+        color: white
+        .comment__features
+            display: flex
+            flex-direction: row
+            margin-bottom: 24px
+            span 
+                margin-right: 32px
+            .feature__item
+                display: flex
+                align-items: center
+                color: white
+                cursor: pointer
+                i
+                    width: 24px
+                    height: 24px
+                    margin-right: 8px
+                span
+                    font-size: 14px
+                    letter-spacing: 0.007px
+                    color: rgb(170,170,170)
+                    cursor: pointer
+                    font-weight: 500    
+                    line-height: 20px  
+
+        .form-comment__container
+            display: flex
+            flex-direction: row 
+            width: 100%  
+            margin-bottom: 16px 
+            .user-author
+                border-radius: 50%
+                object-fit: cover
+                height: 100%
+                width: 24px
+                height: 24px
+                margin-right: 16px
+            fieldset 
+                position: relative
+                border: none
+                #first
+                    background-color: #00000000
+                    border-bottom: 1px solid #404040
+                    color: white
+                label 
+                    position: absolute 
+                    top: 18px
+                    color: #aaaaaa
+                    transform-origin: left
+                    transition: all 0.3s ease
+                input:focus ~ label 
+                    color: red 
+                input:focus ~ label,
+                input:valid ~ label 
+                    top: 0
+                    transform: scale(0.6, 0.6)
+                input 
+                    font-size: 20px  
+                    width: 100%
+                    border: none  
+                    margin-top: 10px
+                input:focus
+                    outline: none
+                .after 
+                    width: 100%
+                    height: 3px
+                    background: linear-gradient(to right, red 50%, transparent 50%)
+                    background-size: 200% 100%
+                    background-position: 100% 0
+                    transition: all 0.6s ease
+                input:focus ~ .after 
+                    background-position: 0 0
+                
+
+        .child-comment
+            margin-left: 56px

@@ -1,0 +1,80 @@
+<div class="video__container">
+    <div class="video-player">
+        <video src="{{video.link}}" controls></video>
+    </div>
+    <div class="video-detail__container">
+        <div class="video__headline">
+            <h2>{{video.title}}</h2>
+            <div class="features__container">
+                <span>{{video.view}} views &#8226; {{video.created_at | date: 'MMM d,yyyy'}}</span>
+                <div class="video__features">
+                    <div class="feature__item">
+                        <i [inlineSVG] = "'assets/like.svg'"></i>
+                        <span>0</span>
+                    </div>
+                    <div class="feature__item">
+                        <i [inlineSVG] = "'assets/dislike.svg'"></i>
+                        <span>0</span>
+                    </div>
+                    <div class="feature__item">
+                        <i [inlineSVG] = "'assets/share.svg'"></i>
+                        <span>SHARE</span>
+                    </div>
+                    <div class="feature__item">
+                        <i [inlineSVG] = "'assets/save.svg'"></i>
+                        <span>SAVE</span>
+                    </div>
+                </div>
+            </div>     
+        </div>
+        <div class="video__detail">
+            <div class="author__detail">
+                <div class="author">
+                    <a>
+                        <img src="{{video.user.profile_pict}}" alt="">
+                    </a>
+                    <div class="description">
+                        <a href="#">{{video.user.name}}</a>
+                        <span>0 subscribers</span>
+                    </div>
+                </div>
+                <button class="subscribe-btn btn">SUBSCRIBE</button>
+            </div>
+            <div class="description__container">
+                <span class="paragraph__content">
+                    {{video.description}}
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="comment__container">
+        <div class="comment__features">
+            <span>{{comments.length}} comments</span>
+            <div class="feature__item">
+                <i [inlineSVG] = "'assets/menu-alt-left.svg'"></i>
+                <span>SORT BY</span>
+            </div>
+        </div>
+        <div class="form-comment__container">
+            <a>
+                <img  class= "user-author" src="assets/defaultProfile.png" >
+            </a>
+            <fieldset>
+                <input id="first" type="text" name="first" required>
+                <label for="first">Add a public comment..</label>
+                <div class="after"></div>
+            </fieldset>
+        </div>
+        
+        <div *ngFor = "let x of comments;let j = index">
+            <app-comment *ngIf="!x.parent_id" [comment]="x"></app-comment>
+            <div *ngFor = "let y of comments | slice:j:length" class="child-comment">
+                <app-comment  *ngIf="y.parent_id == x.id" [comment]="y" ></app-comment>
+            </div>
+        </div>
+    </div>
+    
+</div>
+
+
+

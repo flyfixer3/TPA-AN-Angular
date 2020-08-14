@@ -1,0 +1,38 @@
+<div class="comment__container">
+    <div class="author">
+        <a *ngIf="!comment.parent_id">
+            <img  class= "parent-comment" src="{{comment.user.profile_pict}}" alt="">
+        </a>
+        <a *ngIf="comment.parent_id">
+            <img  class= "child-comment" src="{{comment.user.profile_pict}}" alt="">
+        </a>
+    </div>
+    <div class="comment__detail">
+        <div class="comment__header">
+            <a href="#">{{comment.user.name}}</a>
+            <span>{{diffDate}}</span>
+        </div>
+        <div class="comment_description">
+            {{comment.comment}}
+        </div>
+        <div class="comment__features">
+            <div class="feature__item">
+                <a href="">
+                    <i [inlineSVG] = "'assets/like.svg'"></i>
+                </a>
+                <span>0</span>
+            </div>
+            <div class="feature__item">
+                <a href="">
+                    <i [inlineSVG] = "'assets/dislike.svg'"></i>
+                </a>
+                <span>0</span>
+            </div>
+            <div class="feature__item">
+                <span>REPLY</span>
+            </div>
+        </div>
+
+    </div>
+</div>
+

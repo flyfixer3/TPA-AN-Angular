@@ -1,0 +1,15 @@
+<div class="thumbnail" (click)="setVideo(video)" [routerLink]="['/watch/',video.title]">
+    <img src="{{video.thumbnail}}" alt="">
+</div>
+<div class="details">
+    <div class="author">
+        <img src="{{video.user.profile_pict}}" alt="">
+    </div>
+    <div class="description">
+        <h3>{{video.title}}</h3>
+        <a href="#">{{video.user.name}}</a>
+        <span>{{video.view}} views &#8226; {{diffDate}}</span>
+    </div>
+</div>
+
+

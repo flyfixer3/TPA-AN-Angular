@@ -1,0 +1,16 @@
+<div *ngIf="loggedIn" class="icons__container">
+    <div class="icons__features">
+        <i [inlineSVG] = "'assets/upload-video.svg'"></i>    
+        <i [inlineSVG] = "'assets/menu-grid.svg'"></i>
+        <i [inlineSVG] = "'assets/notification.svg'"></i>
+    </div>
+        <img src="{{user.photoUrl}}" alt="">
+    
+</div>
+<div *ngIf="!loggedIn" class="icons__container">
+    <i [inlineSVG] = "'assets/overflow-menu.svg'"></i>    
+    <button (click)="signInWithGoogle()" class="sign__container">
+        <i [inlineSVG] = "'assets/profile.svg'"></i>
+        <span>SIGN IN</span>
+    </button>
+</div>

@@ -1,0 +1,9 @@
+<div class="video__container">
+    <div class="video__grid">
+        <div *ngFor = "let x of videos; let j = index">
+            <app-video class="video__component" *ngIf = "j < lastKey" [video]="x">
+            </app-video>
+        </div>
+    </div>
+    <div class="end-point"></div>
+</div>

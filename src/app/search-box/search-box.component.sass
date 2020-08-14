@@ -1,0 +1,53 @@
+.search__container
+    display: flex
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration 
+    display: none
+    
+input[type="search"]
+    color: #dfdfdf
+    border: none
+    whitespace: wrap
+    overflow: hidden
+    background: #070707
+    text-overflow: ellipsis
+    white-space: nowrap
+    padding: 0.45em 0.8em
+    border: 1px solid#2f2f2f
+    text-decoration: none
+    line-height: normal
+    flex: 2 0 280px
+    height: 32px
+    width: 620px
+    font-size: 0.97em
+
+input[type="search"]:focus 
+    background: #343434
+    color: white
+    transition: background 400ms ease-in-out
+    outline: none
+    
+
+
+button 
+    flex: 0.32 0 2px
+    display: flex
+    background: #2f2f2f
+    color: white
+    border: none
+    outline: none
+    padding: 0.55em 0.5em 0.2em 0.5em
+    cursor: pointer
+    height: 32px
+    justify-content: center
+
+button:hover
+    .search--icon
+        color: #a5a5a5
+        transition: color 200ms ease-in-out
+.search--icon
+    color: grey
+    width: 18px
