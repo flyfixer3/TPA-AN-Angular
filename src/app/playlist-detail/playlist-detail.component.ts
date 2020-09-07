@@ -35,6 +35,7 @@ export class PlaylistDetailComponent implements OnInit {
       this.inputTitle = this.playlist.title
       this.inputDescription = this.playlist.description ? this.playlist.description : ""
       this.diffDate = this.dateService.calculateDifference(this.playlist?.updated_at)
+      this.findVideoPriorityOnPlaylist(this.playlistID)
     })
     // this.router.events.subscribe((evt) => {
     //   if (evt instanceof NavigationEnd) {
@@ -69,12 +70,30 @@ export class PlaylistDetailComponent implements OnInit {
       }
     }[]
   }
-  videos;
+  videos:{
+    playlist_id:String
+    priority:BigInteger
+    video:{
+      id:String
+      title:String
+      thumbnail:String
+      description:String
+      view:BigInteger
+      created_at:Date
+      user:{
+        id:String
+        name:String
+        profile_pict
+      }
+    }
+  }[]
   isPrivate:Boolean;
   isCreator:Boolean;
+  lastKey;
+  observer
   ngOnInit(): void {
     this.playlistID = this.activity.snapshot.paramMap.get('id').toString()
-    this.getAllCurrentUserPlaylists(this.userService.getCurrentUser().id)
+    if(this.userService.getCurrentUser()) this.getAllCurrentUserPlaylists(this.userService.getCurrentUser()?.id)
     this.playlist = this.userService.getCurrentUser()?.save_playlists.filter((playlist)=> playlist.id == this.playlistID)[0]
     this.isCreator= false
     if(!this.playlist){
@@ -86,6 +105,23 @@ export class PlaylistDetailComponent implements OnInit {
     this.isPrivate = this.playlist?.private
     this.inputTitle = this.playlist?.title
     this.inputDescription = this.playlist?.description
+    this.findVideoPriorityOnPlaylist(this.playlistID)
+    this.lastKey = 8;
+    this.observer = new IntersectionObserver((entry) => {
+      if (entry[0].isIntersecting) {
+          let main = document.querySelector('.playlist__grid');
+          if (this.lastKey < this.videos?.length) {
+            let div = document.createElement('div');
+            let video = document.createElement('app-video-playlist');
+            video.setAttribute('playlistVideo', 'this.videos[this.lastKey]');
+            div.appendChild(video);
+            main.appendChild(div);
+            this.lastKey++;
+          }
+        }        
+      }
+    );
+    this.observer.observe(document.querySelector('.end-point'));    
   }
 
   @HostListener('document:click', ['$event']) onDocumentClick(event) {
@@ -101,7 +137,8 @@ export class PlaylistDetailComponent implements OnInit {
         playlist_id: playlist_id,
       },
     }).valueChanges.subscribe((result)=>{
-      this.videos = result.data.findVideoPriority
+      this.videos = result.data.getVideoPriorityByPlaylistId
+      this.playlistService.setPlaylistVideo(this.videos)
     })  
   }
   toggleShowHideModal($event){
@@ -123,6 +160,7 @@ export class PlaylistDetailComponent implements OnInit {
       this.updatePlaylist()
     }
   }
+  
   getAllCurrentUserPlaylists(userID:String){
     this.apollo.watchQuery<any>({
       query: queryGetAllCurrentUserPlaylist,

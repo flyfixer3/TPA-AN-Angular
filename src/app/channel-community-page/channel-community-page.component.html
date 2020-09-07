@@ -32,21 +32,6 @@
                 </div>
             </div>
             <div class="community__grid">
-                <div class="community__header">
-                    <div class="author__detail">
-                        <div class="author">
-                            <a>
-                                <img src="{{userService.getChannelUser().profile_pict}}" alt="">
-                            </a>
-                        </div>
-                    </div>
-                    <div class="description__container">
-                        <div class="name">
-                            <a href="#">{{this.userService.getChannelUser().name}}</a>
-                            <span>diffDate</span>
-                        </div>
-                    </div>
-                </div>
                 <div class="community__detail" *ngFor = "let x of post;">
                     <app-channel-community-item [post]="x"></app-channel-community-item>
                 </div>

@@ -4,7 +4,7 @@
             <div class="recent-section">
                 <div class="section-title">
                     <span>Recently Upload</span>
-                    <a routerLink="videos">
+                    <a (click)="goToVideosPage()">
                         view all
                     </a>
                 </div>
@@ -26,7 +26,7 @@
             <div class="recent-section" *ngIf="fiveVideos">
                 <div class="section-title">
                     <span>Videos</span>
-                    <a routerLink="videos">
+                    <a (click)="goToVideosPage()">
                         view all
                     </a>
                 </div>

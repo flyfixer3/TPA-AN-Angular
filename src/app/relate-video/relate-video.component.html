@@ -1,4 +1,4 @@
-<div class="container" [routerLink]="['/watch/',video.id]">
+<div class="container" (click)="watchVideo()">
     <div class="thumbnail">
         <img src="{{video.thumbnail}}" alt="">
     </div>

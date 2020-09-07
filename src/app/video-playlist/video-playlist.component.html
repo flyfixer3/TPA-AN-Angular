@@ -1,6 +1,77 @@
-<div class="video__container">
+<div class="{{isPlaylistShow ? 'modal__background--active' : 'modal__background'}}">
+    <div class="modal__container" (click)="$event.stopPropagation()">       
+        <div class="modal__content">
+            <div class="modal__header">
+                <span>Save to</span>
+                <div (click)="toggleShowHideSaveModal($event);">
+                    <i class = "x-close" [inlineSVG]="'assets/close.svg'" ></i>
+                </div>
+            </div>
+            <div class="modal__start">
+                <div *ngFor="let x of playlistService.getPlaylistsByUserId(this.userService.getCurrentUser()?.id)">
+                    <input type="checkbox" value="{{x.id}}" (change)="answerProvided($event)">
+                    <span>{{x.title}} </span>
+                    <i [inlineSVG]="x.private ? 'assets/private.svg' : 'assets/public.svg'"></i>
+                </div>
+            </div>            
+            <div class="modal__new-playlist">
+                <div class="plus">
+                    <a  (click)="toggleCreateNewPlaylist()">
+                        <i class="{{!isCreateNewPlaylist ? 'add' : 'rotate'}}" [inlineSVG]="'assets/add.svg'"></i>
+                        <span>Create new playlist</span>
+                    </a>
+                </div>
+                <div *ngIf="isCreateNewPlaylist">
+                    <div class="form__container">
+                        <fieldset>
+                            <input class ="first" type="text" name="first" [(ngModel)]='inputTitle' required>
+                            <label for="first">{{inputTitle ? 'Enter playlist name' : 'Name'}}</label>
+                            <div class="after"></div>
+                        </fieldset>
+                    </div>
+                    <div class="dropdown-accessibility">
+                        <div (click)="toggleShowHidePrivacyModal($event)" class="accessibility-btn">
+                            <span>{{isPrivate ? 'Private':'Public'}}</span>
+                            <i>&#9660;</i>
+                        </div>
+                        <div class="hidden-accessibility__container" (click)="$event.stopPropagation()" *ngIf="isPrivacyModalShow">
+                            <div class="accessibility__modal">
+                                <div class="accessibility-item {{!isPrivate ? 'current' : ''}}">
+                                    <a (click)= "isPrivate = false;isPrivacyModalShow= false">
+                                        <i [inlineSVG]="'assets/public.svg'"></i>
+                                        <div class="accessibility-description">
+                                            <span>Public</span>
+                                            <p>Anyone can search for and view</p>
+                                        </div>
+                                    </a>
+                                </div>
+                                <div class="accessibility-item {{isPrivate ? 'current' : ''}}">
+                                    <a (click) = "isPrivate = true;isPrivacyModalShow= false">
+                                        <i [inlineSVG]="'assets/private.svg'"></i>
+                                        <div class="accessibility-description">
+                                            <span>Private</span>
+                                            <p>Only you can view</p>
+                                        </div>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="submit-btn">
+                        <div>
+                            <a (click)="createPlaylist()">create</a>
+                        </div>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</div>  
+
+<div class="video__container" (click)="watchVideo()">
     <div *ngIf="playlistVideo" class="priority">
-        <span>{{playlistVideo.priority}}</span>
+        <span>{{index+1}}</span>
     </div>
     <div class="details__container">
         <div class="thumbnail">
@@ -23,7 +94,42 @@
             <span>{{video.description}}</span>
         </div>
         <div class="features">
-            <i [inlineSVG]="'assets/menu-grid.svg'"></i>
+            <i [inlineSVG]="'assets/menu-grid.svg'" (click)="toggleShowHideModal($event)"></i>
+            <div class="features__container" (click)="$event.stopPropagation()" *ngIf="isShow">
+                <div class="features__modal">
+                    <div class="features-item">
+                        <a >
+                            <i [inlineSVG]="'assets/queue.svg'"></i>
+                            <span>Add to queue</span>
+                        </a>
+                    </div>
+                    <div *ngIf="playlistVideo" class="features-item" (click)="updatePriorityUp()">
+                        <a >
+                            <i [inlineSVG]="'assets/queue.svg'"></i>
+                            <span>Move up</span>
+                        </a>
+                    </div>
+                    <div *ngIf="playlistVideo" class="features-item">
+                        <a >
+                            <i [inlineSVG]="'assets/queue.svg'"></i>
+                            <span>Move down</span>
+                        </a>
+                    </div>
+                    <div class="features-item" *ngIf="userService.getCurrentUser()">
+                        <a (click)="toggleShowHideSaveModal($event);toggleShowHideModal($event)">
+                            <i [inlineSVG]="'assets/add-playlist.svg'"></i>
+                            <span>Save to playlist</span>
+                        </a>
+                    </div>
+                    <div class="features-item" *ngIf="video.user.id == userService.getCurrentUser()?.id">
+                        <a (click)="deleteVideo();toggleShowHideModal($event)">
+                            <i [inlineSVG]="'assets/trash.svg'"></i>
+                            <span>Remove video</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
+

@@ -1,4 +1,19 @@
 <div class="post__container">
+    <div class="community__header">
+        <div class="author__detail">
+            <div class="author">
+                <a>
+                    <img src="{{userService.getChannelUser().profile_pict}}" alt="">
+                </a>
+            </div>
+        </div>
+        <div class="description__container">
+            <div class="name">
+                <a href="#">{{this.userService.getChannelUser().name}}</a>
+                <span>diffDate</span>
+            </div>
+        </div>
+    </div>
     <div class="post-title">{{post.title}}</div>
     <div class="post-description">{{post.description}}</div>
     <div class="post-media">

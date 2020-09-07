@@ -18,7 +18,7 @@ const routes: Routes = [
     path:'',redirectTo:'home',pathMatch:'full'
   },
   { path: 'playlist/:id', component: PlaylistDetailComponent },
-  { path: 'watch/:id', component: WatchContentComponent },
+  { path: 'watch/:id/playlist/:index', component: WatchContentComponent },
   { path: 'channel/:id', component: ChannelContentComponent, children:[
     {path:'',redirectTo:'home',pathMatch:'full'},
     {path:'home', component: ChannelHomePageComponent},

@@ -4,6 +4,7 @@ import { VideoDetailsService } from '../video-details.service'
 import {Apollo} from 'apollo-angular';
 import gql from 'graphql-tag';
 import { Router, NavigationEnd, ActivatedRoute } from '@angular/router';
+import { PlaylistsServiceService } from '../playlists-service.service';
 
 
 @Component({
@@ -18,7 +19,7 @@ export class WatchContentComponent implements OnInit {
   isShow=false;
   defaultProfile= "assets/defaultProfile.png"
   videoID;  
-  constructor(private videoDetailsService: VideoDetailsService,private apollo:Apollo, public userService:UserService, private router:Router ,private activity:ActivatedRoute) {
+  constructor(private videoDetailsService: VideoDetailsService,private apollo:Apollo, public userService:UserService, private router:Router ,private activity:ActivatedRoute, private playlistService:PlaylistsServiceService) {
     this.videoDetailsService.videosValueChange.subscribe((value)=>{
       this.getVideo(this.videoID)
       this.videos = value
@@ -28,9 +29,9 @@ export class WatchContentComponent implements OnInit {
         this.checkCurrentUserFeedBack()
       }
     })
-    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
-    //   return false;
-    // };
+    this.router.routeReuseStrategy.shouldReuseRoute = function () {
+      return false;
+    };
 
     this.router.events.subscribe((evt) => {
       if (evt instanceof NavigationEnd) {
@@ -101,8 +102,24 @@ export class WatchContentComponent implements OnInit {
   feedback = null;
   likesCount = 0;
   dislikeCount = 0
-  
-
+  index;
+  playlist:{
+    playlist_id:String
+    priority:BigInteger
+    video:{
+      id:String
+      title:String
+      thumbnail:String
+      description:String
+      view:BigInteger
+      created_at:Date
+      user:{
+        id:String
+        name:String
+        profile_pict
+      }
+    }
+  }[]
   ngOnInit(): void {
     this.videoID = this.activity.snapshot.paramMap.get('id').toString()
     if(this.videoDetailsService.checkIsReady()){  
@@ -110,12 +127,20 @@ export class WatchContentComponent implements OnInit {
       this.getVideoComment()
       this.checkOtherFeedbacks()
     }
+    this.index = this.activity.snapshot.paramMap.get('index').toString()
+    if(this.index != -1){
+      this.playlist = this.playlistService.getPlaylistVideo()
+    }
     
     if(this.userService.getCurrentUser()){
       this.checkCurrentUserFeedBack()
     }
     this.videos = this.videoDetailsService.getVideos()
     
+  }
+
+  watchVideoNext(){
+    this.router.navigateByUrl("watch/"+this.videos[0].id+"/playlist/"+ -1)
   }
   giveFeedback(feedback:boolean){
     let isFeedbackBeforeGood = this.feedback == "like" ? true : false

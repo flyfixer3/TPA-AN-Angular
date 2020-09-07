@@ -23,7 +23,7 @@ export class TrendContentComponent implements OnInit {
     let oneDay = 24 * 60 * 60 * 1000;
     var channelVideos = videos.filter((value)=>((currDate.getTime() - (new Date(value.created_at)).getTime())/oneDay) <= 7 )
     channelVideos = [] = channelVideos.sort((n1, n2) => {
-      if (n1.view > n2.view) {
+      if (n1.view < n2.view) {
         return 1;
       } else return -1;
     });

@@ -54,4 +54,8 @@ export class ChannelHomePageComponent implements OnInit {
     }
   }
 
+  goToVideosPage(){
+    this.router.navigate(['../videos'], { relativeTo: this.activity });
+  }
+
 }

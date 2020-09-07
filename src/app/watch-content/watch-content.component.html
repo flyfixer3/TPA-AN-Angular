@@ -5,7 +5,10 @@
         </div>
         <div class="video-detail__container">
             <div class="video__headline">
-                <h2>{{video?.title}}</h2>
+                <div style="display: flex; justify-content: space-between;">
+                    <h2>{{video?.title}}</h2>
+                    <button class="subscribe-btn btn" (click)="watchVideoNext()">Next</button>
+                </div>
                 <div class="features__container">
                     <span>{{video?.view | shortNumber}} views &#8226; {{video?.created_at | date: 'MMM d,yyyy'}}</span>
                     <div class="video__features">
@@ -79,7 +82,13 @@
         </div>
     </div>
     <div class="video__grid">
-        <div *ngFor = "let x of videos ; let j = index">
+        <div class="playlist" *ngIf="index!=-1">
+            <div class="{{j == (index-1) ? 'current' : ''}}" *ngFor = "let x of playlist;let j = index">
+                <app-relate-video class="video__component" [video]="x.video"></app-relate-video>
+            </div>
+        </div>
+        <div class="{{j== 0 ? 'next-video':''}}" *ngFor = "let x of videos ; let j = index">
+            <span *ngIf="j==0">Next video</span>
             <app-relate-video class="video__component" [video]="x"></app-relate-video>
         </div>
     </div>

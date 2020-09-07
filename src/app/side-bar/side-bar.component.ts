@@ -3,6 +3,7 @@ import { UserService } from '../user.service';
 import { PlaylistsServiceService } from '../playlists-service.service';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -31,7 +32,7 @@ export class SideBarComponent implements OnInit {
       notification:Boolean
     }[]
   }
-  constructor(private userService:UserService,private apollo:Apollo, private playlistService:PlaylistsServiceService) {
+  constructor(private userService:UserService,private apollo:Apollo, private playlistService:PlaylistsServiceService, private router:Router) {
     userService.currentUserValueChange.subscribe((user)=>{
       this.currentUser = user
       console.log(this.currentUser)
@@ -106,6 +107,9 @@ export class SideBarComponent implements OnInit {
   }
   setChannelUser(user:any){
     this.userService.setChannelUser(user)
+  }
+  goToPage(x:any){
+    this.router.navigateByUrl("/"+ x.title.toLowerCase())
   }
 }
 

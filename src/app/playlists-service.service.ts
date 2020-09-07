@@ -50,8 +50,28 @@ export class PlaylistsServiceService {
     }[]
   }
 
+  playlistVideo:{
+    playlist_id:String
+    priority:BigInteger
+    video:{
+      id:String
+      title:String
+      thumbnail:String
+      description:String
+      view:BigInteger
+      created_at:Date
+      user:{
+        id:String
+        name:String
+        profile_pict
+      }
+    }
+  }[]
+  newPrior
+  oldPrior
   playlistsValueChange: Subject<any[]> = new Subject<any[]>()
   playlistValueChange: Subject<any> = new Subject<any[]>()
+  playlistVideoChange: Subject<any[]> = new Subject<any[]>()
   constructor() {
     this.playlistsValueChange.subscribe((value)=>{
       this.playlists = value
@@ -59,11 +79,12 @@ export class PlaylistsServiceService {
     this.playlistValueChange.subscribe((value)=>{
       this.playlist = value
     })
+    this.playlistVideoChange.subscribe((value)=>{
+      this.playlistVideo = value
+    })
   }
   getPlaylistsByUserId(id:String){
-    console.log(this.playlists[0].user.id)
-    console.log(id)
-    return this.playlists.filter((value)=>value.user.id == id)
+    return this.playlists?.filter((value)=>value.user.id == id)
   }
   setPlaylists(playlists:any[]){
     this.playlistsValueChange.next(playlists)
@@ -82,10 +103,15 @@ export class PlaylistsServiceService {
     return this.playlists
   }
   setPlaylist(id:string){
-    console.log(this.playlists)
     this.playlistValueChange.next(this.playlists?.filter((playlist)=> playlist.id == id)[0])
   }
   getPlaylist(){
     return this.playlist
+  }
+  setPlaylistVideo(playlistVideo:any[]){
+    this.playlistVideoChange.next(playlistVideo)
+  }
+  getPlaylistVideo(){
+    return this.playlistVideo
   }
 }

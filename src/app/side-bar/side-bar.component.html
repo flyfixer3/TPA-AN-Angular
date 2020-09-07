@@ -1,7 +1,7 @@
 <div class="nav-bar__container">  
     <div class="side-bar__container">
         <div class="side-bar--inside__container">
-            <app-side-bar-item *ngFor = "let x of items_main" [item]="x" [routerLink]="[x.title.toLowerCase()]"></app-side-bar-item>
+            <app-side-bar-item *ngFor = "let x of items_main" [item]="x" (click)="goToPage(x)"></app-side-bar-item>
         </div>
         <div class="side-bar--inside__container" *ngIf="playlists">
             <app-side-bar-playlist *ngFor = "let x of playlists" [playlist]="x" [routerLink]="['/playlist/',x.id]"></app-side-bar-playlist>
@@ -12,7 +12,7 @@
             <app-side-bar-channel *ngFor = "let x of currentUser.subscribers" [channelUser]="x.target"(click)="setChannelUser(x.target)" [routerLink]="['/channel/',x.target.id]"></app-side-bar-channel>
         </div>
         <div class="side-bar--inside__container">
-            <app-side-bar-item *ngFor = "let x of items_categories" [item]="x" [routerLink]="[x.title.toLowerCase()]"></app-side-bar-item>
+            <app-side-bar-item *ngFor = "let x of items_categories" [item]="x" (click)="goToPage(x)"></app-side-bar-item>
         </div>
     </div>
 </div>

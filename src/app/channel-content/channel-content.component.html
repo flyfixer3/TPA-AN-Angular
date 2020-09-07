@@ -13,7 +13,7 @@
                 <div class="subscriber-count">{{this.userService.getChannelUser().subscribers.length | shortNumber}} subscribers
                 </div>
             </div>
-            <div class="subscribtion__container">
+            <div class="subscribtion__container" *ngIf="channelUser?.id != currentUser?.id">
                 <button (click)="ToggleSubscriber()"class="btn {{subscriber ? 'subscriber-btn' : 'subscribe-btn'}}">{{subscriber ? 'subscribed' : 'subscribe' }}</button>
                 <button (click)="ToggleNotification()" class="notification-btn btn" aria-label="Enable Notifications" *ngIf="subscriber">
                     <i aria-hidden="true" [inlineSVG]="notification ? 'assets/get-notification.svg':'assets/block-notification.svg'"></i>

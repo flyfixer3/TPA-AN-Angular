@@ -3,7 +3,7 @@
         <div class="modal__content">
             <div class="modal__header">
                 <span>Save to</span>
-                <div (click)="toggleShowHideSaveModal($event)">
+                <div (click)="toggleShowHideSaveModal($event);getAllCurrentUserPlaylists(userService.getCurrentUser().id)">
                     <i class = "x-close" [inlineSVG]="'assets/close.svg'" ></i>
                 </div>
             </div>
@@ -69,7 +69,7 @@
     </div>
 </div>  
 
-<div class="thumbnail" [routerLink]="['/watch/',video.id]">
+<div class="thumbnail" (click)="watchVideo()">
     <img src="{{video.thumbnail}}" alt="">
 </div>
 <div class="details">

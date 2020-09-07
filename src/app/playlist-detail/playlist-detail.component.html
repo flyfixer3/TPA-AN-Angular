@@ -88,6 +88,12 @@
         </div>
     </div>
     <div class="playlist-content__container">
-        <app-video-playlist class="list-video"  *ngFor="let x of videos" [video]="x.video"></app-video-playlist>
+        <div class="playlist__grid">
+            <div *ngFor = "let x of videos; let j = index">
+                <app-video-playlist class="list-video" *ngIf = "j < lastKey" [playlistVideo]="x" [index]=j></app-video-playlist>
+            </div>
+            <div class="end-point"></div>
+        </div>
     </div>
+    
 </div>
