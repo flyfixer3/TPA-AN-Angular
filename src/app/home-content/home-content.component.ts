@@ -1,6 +1,6 @@
 import { Component, OnInit, Query } from '@angular/core';
 import {Apollo} from 'apollo-angular'
-import gql from 'graphql-tag'
+import { VideoDetailsService } from '../video-details.service'
 @Component({
   selector: 'app-home-content',
   templateUrl: './home-content.component.html',
@@ -8,42 +8,25 @@ import gql from 'graphql-tag'
 })
 export class HomeContentComponent implements OnInit {
 
-  constructor(private apollo:Apollo) { }
+  constructor(private apollo:Apollo, public videoService:VideoDetailsService) { 
+    videoService.videosValueChange.subscribe((value)=>{
+      this.videos = this.videoService.getVideos()
+      this.videoService.shuffle(this.videos)
+    })
+  }
   lastKey;
-  observer
+  observer 
   videos;
 
   ngOnInit(): void {
-    this.apollo.watchQuery<any>({
-      query: gql
-      `query getVideos{
-          videos{
-            id,
-            link,
-            title,
-            thumbnail,
-            description,
-            view,
-            created_at,
-            location{
-              id,
-              name
-            }
-            user{
-              name,
-              profile_pict
-            }
-          }
-        }`
-    }).valueChanges.subscribe((result)=>{
-      this.videos = result.data.videos
-      console.log(this.videos)
-      this.lastKey = 12;
-      this.observer = new IntersectionObserver((entry) => {
-        if (entry[0].isIntersecting) {
+    this.videos = this.videoService.getVideos()
+    this.lastKey = 12;
+    this.observer = new IntersectionObserver((entry) => {
+      if (entry[0].isIntersecting) {
+        if(this.videoService.checkIsReady()){
           let main = document.querySelector('.video__grid');
           for (let i = 0; i < 4; i++) {
-            if (this.lastKey < this.videos.length) {
+            if (this.lastKey < this.videos?.length) {
               let div = document.createElement('div');
               let video = document.createElement('app-video');
               video.setAttribute('video', 'this.videos[this.lastKey]');
@@ -52,11 +35,10 @@ export class HomeContentComponent implements OnInit {
               this.lastKey++;
             }
           }
-        }
-      });
-      this.observer.observe(document.querySelector('.end-point'));  
-    })
-    
+        }        
+      }
+    });
+    this.observer.observe(document.querySelector('.end-point'));    
   }
 
 }

@@ -1,0 +1,78 @@
+
+.section__container
+    display: flex
+    flex-direction: column
+    padding-top: 2.4rem
+    padding-bottom: 2.4rem
+    max-width: 72rem
+    width: 100%
+    margin: 0 auto
+    padding: 1.5vw 2vw
+    .section-header
+        color: white
+        font-weight: 500
+        font-size: 16px
+        letter-spacing: normal
+        line-height: 20px
+        display: flex
+        justify-content: space-between
+        align-items: center
+        margin: 8px 0px
+        .features
+            display: flex
+            align-items: center
+            cursor: pointer
+            position: relative
+            i
+                width: 20px
+                height: 20px
+                padding: 8px
+                transition: color 0.3s ease-out
+            span                
+                letter-spacing: 0.007px
+                color: rgb(170,170,170)
+                cursor: pointer
+                font-weight: 500
+            .features__container
+                background-color: #181818
+                position: absolute
+                top: 40px
+                right: 0
+                .features__modal
+                    display: flex
+                    flex-direction: column
+                    width: 170px
+                    padding: 8px 0
+                    .features-item
+                        display: block
+                        max-height: 48px
+                        a 
+                            display: flex
+                            align-items: center
+                            height: 48px
+                            text-align: left
+                        span 
+                            width: 100%
+                            font-weight: 400
+                            line-height: 21px
+                            font-size: 14px
+                            color: #ffffffc0
+                            padding: 0px 16px
+                    .features-item:hover
+                        background-color: #323232
+                    .features-item.current
+                        background-color: #323232
+                
+    .section-details
+        .video__container    
+            padding-bottom: 24px
+            .video__grid
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+                div
+                    display: flex
+                    width: calc(25% - 10px)
+                    margin-bottom: 32px
+                    cursor: pointer
+

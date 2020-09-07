@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  flex-direction: row;
+}
+.container .thumbnail {
+  width: 168px;
+  height: 94px;
+  margin-right: 8px;
+}
+.container .thumbnail img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+.container .details {
+  display: flex;
+  color: white;
+}
+.container .details .description {
+  display: flex;
+  flex-direction: column;
+}
+.container .details .description h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+.container .details .description a {
+  text-decoration: none;
+}
+.container .details .description a:hover {
+  color: white;
+}
+.container .details .description a, .container .details .description span {
+  margin-top: 3px;
+  font-size: 14px;
+  color: grey;
+}

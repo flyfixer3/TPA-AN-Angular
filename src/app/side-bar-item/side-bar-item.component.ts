@@ -1,4 +1,5 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, SimpleChange } from '@angular/core';
+import {Router} from '@angular/Router'
 
 @Component({
   selector: 'app-side-bar-item',
@@ -7,7 +8,7 @@ import { Component, OnInit, Input } from '@angular/core';
 })
 export class SideBarItemComponent implements OnInit {
 
-  constructor() { }
+  constructor(public router:Router) { }
   
   ngOnInit(): void {
   }
@@ -15,4 +16,12 @@ export class SideBarItemComponent implements OnInit {
     svg_path:string
     title:string
   };
+  routing(){
+    this.router.navigateByUrl(this.item.title.toLowerCase())
+  }
+  
+ 
+
+
+
 }

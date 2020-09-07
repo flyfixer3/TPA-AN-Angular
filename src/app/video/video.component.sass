@@ -1,25 +1,276 @@
+::-webkit-scrollbar 
+    width: 8px
+    height: 6px
+    
+::-webkit-scrollbar-track 
+    background: #252525
+::-webkit-scrollbar-thumb 
+    background: #555
+    border-radius: 10%
+::-webkit-scrollbar-thumb:hover 
+    background: #393939
+.modal__background
+    opacity: 0
+    pointer-events: none
+    position: absolute 
+    transition: opacity 0.4s ease-out
+.modal__background--active
+    @extend .modal__background
+    opacity: 1
+    pointer-events: initial
+    z-index: 999
+    background-color: rgba(0, 0, 0, 0.8)
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    .modal__container
+        background-color: rgb(33,33,33)
+        font-size: 14px
+        font-weight: 400
+        margin: 24px 40px
+        line-height: 20px
+        max-height: 474px
+        max-width: 210px
+        position: fixed
+        top: 160px
+        width: 210px
+        .modal__content
+            margin: 16px 0
+            padding: 0 24px
+            display: flex
+            flex-direction: column
+            position: relative
+            user-select: none
+            max-width: 470px
+            justify-content: flex-start
+            .modal__header
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                color: white
+                align-items: center
+                span 
+                    font-size: 16px
+                    font-weight: 500
+                div
+                    cursor: pointer
+                    .x-close
+                        width: 24px
+                        height: 24px
+                        font-size: 13.3px
+                        color: #909090
+                        font-family: Arial
+                div:hover
+                    .x-close
+                        color: white
+
+            .modal__start
+                max-height: 210px
+                overflow-y: scroll
+                div                     
+                    margin-top: 24px
+                    padding: 16px 0
+                    border-top: 1px solid #353535
+                    display: flex
+                    flex-direction: row
+                    align-items: center   
+                    justify-content: space-between
+                    input
+                        margin: 0
+                        width: 18px
+                        height: 18px
+                        color: #aaaaaa
+                        margin-left: 2px
+                    span 
+                        flex-grow: 1
+                        padding-left: 18px 
+                        font-size: 14px
+                        color: #aaaaaa
+                    i 
+                        width: 24px
+                        height: 24px 
+                        padding: 2px
+
+            .modal__new-playlist
+                border-top: 1px solid #353535
+                padding-top: 8px
+                cursor: pointer
+                display: block
+                .plus
+                    .rotate
+                        -webkit-transform: rotate(45deg)
+                        color: red
+                        transition: all .3s ease-in-out
+                    .add
+                        font-weight: bold
+                        transition: all .3s ease-in-out
+                    a 
+                        display: flex
+                        align-items: center
+                        justify-content: space-between
+                        text-align: left
+                        color: #aaaaaa
+                        
+                        i 
+                            display: flex
+                            width: 24px
+                            height: 24px
+                        span 
+                            flex-grow: 1
+                            padding-left: 14px
+                            font-size: 14px
+                a:hover 
+                    color: white
+                div 
+                    .dropdown-accessibility
+                        position: relative
+                        margin-top: 4px
+                        .accessibility-btn
+                            padding: 8px 0
+                            display: flex
+                            cursor: pointer
+                            font-size: 14px
+                            span
+                                height: 24px 
+                                color: #aaaaaa
+                                padding-right: 4px
+                            i 
+                                
+                                height: 18px
+                                width: 24px
+                                display: flex
+                                padding-top: 1px
+                                color: #aaaaaa
+                                font-size: 10px
+                        .hidden-accessibility__container
+                            background-color: #252525
+                            position: absolute
+                            top: 25px
+                            left:0
+                            z-index: 99
+                            .accessibility__modal
+                                display: flex
+                                flex-direction: column
+                                width: 240px
+                                padding: 8px 0
+                                .accessibility-item
+                                    cursor: pointer
+                                    display: block
+                                    max-height: 48px
+                                    a 
+                                        display: flex
+                                        align-items: center
+                                        height: 48px
+                                        text-align: left
+                                        padding: 0 8px
+                                        i 
+                                            width: 24px
+                                            height: 24px
+                                            margin-right: 8px
+                                        .accessibility-description
+                                            display: flex
+                                            flex-direction: column
+                                            flex-grow: 1
+                                            justify-self: flex-start
+                                            span 
+                                                font-size: 14px
+                                                color: white
+                                            p 
+                                                font-size: 13px
+                                                margin: 0
+                                                color: #aaaaaa
+
+                                .accessibility-item:hover
+                                    background-color: #323232
+                                .accessibility-item.current
+                                    background-color: #323232
+                    .form__container
+                        display: flex
+                        flex-direction: row 
+                        align-items: center
+                        width: 100%  
+                        margin-bottom: 16px 
+                        justify-content: space-between
+                        fieldset 
+                            position: relative
+                            border: none
+                            flex-grow: 1
+                            padding-bottom: 0
+                            padding-left: 0
+                        .first
+                            background-color: #00000000
+                            border-bottom: 1px solid #404040
+                            color: white
+                        label 
+                            position: absolute 
+                            top: 18px
+                            color: #aaaaaa
+                            transform-origin: left
+                            transition: all 0.3s ease
+                        span.focus ~ label,
+                        input:focus ~ label 
+                            color: red 
+                        span.focus ~ label,
+                        span.valid ~ label,
+                        input:focus ~ label,
+                        input:valid ~ label 
+                            top: 0
+                            transform: scale(0.6, 0.6)
+                        input 
+                            font-size: 20px  
+                            width: 100%
+                            border: none  
+                            margin-top: 10px
+                            outline: none
+                        .after 
+                            width: 100%
+                            height: 1.5px
+                            background: linear-gradient(to right, red 50%, transparent 50%)
+                            background-size: 200% 100%
+                            background-position: 100% 0
+                            transition: all 0.6s ease
+                        input:focus ~ .after 
+                            background-position: 0 0
+                    
+.submit-btn
+    display: flex
+    justify-content: flex-end
+    align-items: center
+    text-transform: uppercase
+    div 
+        padding: 6px
+        a 
+            font-weight: 500
+            color: #3ea6ff
+            display: block
+            width: 100%                    
 .thumbnail
     width: 100%
-    height: 170px
+    height: auto
     img
         object-fit: cover
         height: 100%
         width: 100%
 
-.author
-    height: 40px
-    width: 40px
-    border-radius: 50%
-    overflow: hidden
-    margin-right: 10px
-    img
-        object-fit: cover
-        height: 100%
-        width: 100%
+
 .details
     display: flex
     padding-top: 10px
     color: white
+    .author
+        height: 40px
+        width: 40px
+        border-radius: 50%
+        overflow: hidden
+        margin-right: 10px
+        img
+            object-fit: cover
+            height: 100%
+            width: 100%
     .description
         display: flex
         flex-direction: column
@@ -35,5 +286,56 @@
             margin-top: 3px
             font-size: 14px
             color: grey 
+    
+    .features
+        position: relative
+        flex-grow: 1
+        display: flex
+        justify-content: flex-end
+        i 
+            display: none
+            padding: 0.5px
+            width: 24px
+            height: 24px
+        .features__container
+            background-color: #252525
+            position: absolute
+            bottom: 60px
+            right: 0
+            z-index: 99
+            .features__modal
+                display: flex
+                flex-direction: column
+                width: 200px
+                padding: 8px 0
+                .features-item
+                    cursor: pointer
+                    display: block
+                    max-height: 36px
+                    a 
+                        display: flex
+                        align-items: center
+                        height: 36px
+                        text-align: left
+                        padding: 0 8px
+                        color: #aaaaaa
+                        i 
+                            display: flex
+                            justify-self: center
+                            align-self: center
+                            width: 20px
+                            height: 20px
+                            margin-right: 8px
+                        span 
+                            font-size: 14px
+
+                .features-item:hover
+                        background-color: #323232
+                .features-item.current
+                    background-color: #323232
+.details:hover
+    .features>i 
+        display: flex
+                        
         
         

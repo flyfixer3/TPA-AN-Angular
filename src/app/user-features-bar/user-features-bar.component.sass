@@ -1,9 +1,95 @@
+.modal__background
+    opacity: 0
+    pointer-events: none
+    position: absolute 
+    transition: opacity 0.4s ease-out
+.modal__background--active
+    @extend .modal__background
+    opacity: 1
+    pointer-events: initial
+    z-index: 999
+    background-color: rgba(0, 0, 0, 0.8)
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    .modal__container
+        background-color: rgb(33,33,33)
+        font-size: 14px
+        font-weight: 400
+        margin: 24px 40px
+        line-height: 20px
+        max-height: 474px
+        max-width: 210px
+        position: fixed
+        top: 160px
+        width: 210px
+        .modal__content
+            margin: 16px 0
+            padding: 0 24px
+            display: flex
+            flex-direction: column
+            position: relative
+            user-select: none
+            max-width: 470px
+            justify-content: flex-start
+            .modal__header
+                display: flex
+                flex-direction: row
+                justify-content: space-between
+                color: white
+                align-items: center
+                align-self: center
+                justify-self: center
+                font-size: 16px
+                font-weight: 500
+            .modal__choosen
+                display: flex
+                align-items: center
+                div
+                    flex-grow: 1
+                    text-align: center
+                    transition: background-color 0.3s ease-out
+                div:hover
+                    background-color: #626262
 .icons__container
     display: flex
     height: 35px
     width: 200px
     padding-right: 1em
     justify-content: flex-end
+    .hidden__dropdown
+        background-color: #252525
+        position: absolute
+        top: 25px
+        right: 0
+        z-index: 99
+        .accessibility__modal
+            display: flex
+            flex-direction: column
+            width: 240px
+            padding: 8px
+            text-align: center
+            .author
+                display: flex
+                justify-content: center
+                align-items: center
+                border-bottom: 1px solid #aaaaaa
+                padding: 8px 0
+            div
+                cursor: pointer
+                display: block
+                max-height: 48px
+                width: 100%
+                text-transform: uppercase
+                font-weight: 500
+                padding: 4px
+                text-align: left
+            div:hover
+                background-color: #626262
     .icons__features
         display: flex
         align-items: center

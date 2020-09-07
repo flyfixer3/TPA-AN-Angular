@@ -1,0 +1,32 @@
+.side-bar__channel
+    display: flex
+    width: 100%
+    align-items: center
+    color: white
+    cursor: pointer
+    .author
+        height: 24px
+        width: 24px
+        border-radius: 50%
+        overflow: hidden
+        margin: 0.45em 1.2em
+        img
+            object-fit: cover
+            height: 100%
+            width: 100%
+    span
+        font-size: 0.9em
+        padding: 0.45em 0em
+
+.side-bar__channel.current
+    background: #565656
+    color: white
+    outline: none
+    border: none
+    span 
+        line-height: 18px
+        font-weight: 500
+    i 
+        color: white
+.side-bar__channel:hover
+    background: #565656

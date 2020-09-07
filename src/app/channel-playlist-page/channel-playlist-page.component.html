@@ -1,0 +1,16 @@
+<div class="section__container">
+    <div class="section-header">
+        <span>Created Playlist (Public Only)</span>
+    </div>
+    <div class="section-details">
+        <div class="playlist__container">
+            <div class="playlist__grid">
+                <div *ngFor = "let x of playlists; let j = index">
+                    <app-channel-playlist-item class="playlist__component" *ngIf = "j < lastKey" [playlist]="x">
+                    </app-channel-playlist-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="end-point"></div>

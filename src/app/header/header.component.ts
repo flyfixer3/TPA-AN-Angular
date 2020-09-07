@@ -1,4 +1,9 @@
 import { Component, OnInit } from '@angular/core';
+import {Apollo} from 'apollo-angular'
+import gql from 'graphql-tag'
+import { VideoDetailsService } from '../video-details.service'
+import { queryGetVideos } from '../watch-content/watch-content.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -7,9 +12,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor() { }
+  constructor(private router:Router,private apollo:Apollo, private VideoService:VideoDetailsService) { 
+    // this.router.routeReuseStrategy.shouldReuseRoute = function () {
+    //   return false;
+    // };
+  }
 
-  hide : boolean = true;
+  hide : boolean = false;
 
   toogleSideBar(){
     if(this.hide){
@@ -21,6 +30,17 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getAllVideos()
   }
+  getAllVideos(){
+    this.apollo.watchQuery<any>({
+      query: queryGetVideos
+    }).valueChanges.subscribe((result)=>{
+      console.log("first data : ")
+      console.log(result.data)
+      this.VideoService.setVideos(result.data.videos)
+    })
+  }
+  
 
 }

@@ -1,0 +1,56 @@
+<section class="channel-content">
+    <div class="channel-container">
+        <div class="container">
+            <div class="recent-section">
+                <div class="section-title">
+                    <span>Recently Upload</span>
+                    <a routerLink="videos">
+                        view all
+                    </a>
+                </div>
+                <div class="recent-video__details">
+                    <div class="thumbnail">
+                        <video src="{{recentUploadVideo?.link}}" controls ></video>
+                    </div>
+                    <div class="details">
+                        <div class="details-header">
+                            <h3>{{recentUploadVideo?.title}}</h3>
+                            <span>{{recentUploadVideo?.view | shortNumber}} views &#8226; {{diffDate}}</span>
+                        </div>
+                        <div    class="description__container">
+                            <span class="paragraph-content">{{recentUploadVideo?.description}}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-section" *ngIf="fiveVideos">
+                <div class="section-title">
+                    <span>Videos</span>
+                    <a routerLink="videos">
+                        view all
+                    </a>
+                </div>
+                <div class="video__container">
+                    <div *ngFor = "let x of fiveVideos">
+                        <app-video class="video__component" [video]="x">
+                        </app-video>
+                    </div>
+                </div>
+            </div>
+            <div class="recent-section" *ngIf="threeplaylist">
+                <div class="section-title">
+                    <span>Playlist</span>
+                    <a routerLink="videos">
+                        view all
+                    </a>
+                </div>
+                <div class="video__container">
+                    <div *ngFor = "let x of threeplaylist">
+                        <app-channel-playlist-item class="video__component" [playlist]="x">
+                        </app-channel-playlist-item>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

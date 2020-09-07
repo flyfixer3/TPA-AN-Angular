@@ -1,0 +1,243 @@
+.playlist-detail__container
+    display: flex
+    flex-direction: row
+    padding-left: 420px
+    .playlist-header__container
+        display: flex
+        flex-direction: column
+        padding: 24px 32px
+        position: fixed
+        top: 62px
+        left:230px
+        max-width: 357px
+        .header-details__subcontainer
+            border-bottom: 1px solid #252525
+            display: flex
+            flex-direction: column
+            .first-thumbnail
+                margin-bottom: 16px
+                height: 200px
+                width: 357px
+                position: relative
+                flex-shrink: 0
+                flex-grow: 0
+                a 
+                    cursor: pointer
+                    display: block
+                    position: absolute
+                    bottom: 0
+                    left: 0
+                    height: 200px
+                    width: 100%
+                    text-decoration-style: solid
+                    font-size: 10px
+                    div
+                        img 
+                            width: 100%
+                            display: block
+                    .overlays
+                        display: flex
+                        flex-direction: row
+                        position: absolute
+                        bottom: 0px
+                        top: 160px
+                        background-color: rgba(0,0,0,0.8)
+                        text-align: center
+                        justify-content: center
+                        align-items: center
+                        width: 100%
+                        line-height: 21px
+                        font-size: 14px
+                        font-weight: 400px
+                        color: white
+                        i 
+                            margin-right: 8px
+                            width: 24px
+                            height: 24px
+                        span 
+                            font-size: 14px
+                            font-weight: 400
+                            text-transform: uppercase
+                            margin-right: 8px
+            .form__container
+                display: flex
+                flex-direction: row 
+                align-items: center
+                width: 100%  
+                margin-bottom: 16px 
+                justify-content: space-between
+                fieldset 
+                    position: relative
+                    border: none
+                    flex-grow: 1
+                    padding-bottom: 0
+                    padding-left: 0
+                    .first
+                        background-color: #00000000
+                        color: white
+                    label 
+                        position: absolute 
+                        font-weight: 400
+                        line-height: 30px
+                        color: #aaaaaa
+                        transform-origin: left
+                        transition: all 0.3s ease
+                    .title
+                        top: 16px
+                        font-size: 20px
+                    .description
+                        top: 20px
+                        font-size: 16px
+                    input:focus ~ label
+                        color: red 
+                        top: 0
+                        transform: scale(0.6 , 0.6)
+                    .toggle
+                        color: red 
+                        top: 0
+                        transform: scale(0.6 , 0.6)
+                    input 
+                        font-size: 20px  
+                        width: 99.4%
+                        border: none  
+                        margin-top: 18px
+                        outline: none
+                        padding-right: 0
+                    .after 
+                        width: 100%
+                        height: 1.2px
+                        background: linear-gradient(to right, red 50%, transparent 50%)
+                        background-size: 200% 100%
+                        background-position: 100% 0
+                        transition: all 0.6s ease
+                    .edit-description.after 
+                        background-position: 0 0
+                    input:focus ~ .after
+                        background-position: 0 0
+                .send-button:hover>i
+                    color: red 
+                    transition: all 0.6s ease
+                .send-button
+                    align-self: flex-end
+                    display: block
+                    cursor: pointer
+                    width: 24px
+                    text-decoration: none
+                    i 
+                        width: 24px
+                        height: 24px
+                        color: #404040
+            .section-details
+                color: #aaaaaa
+                font-size: 14px
+                display: flex
+                flex-grow: 0
+                flex-shrink: 0
+                justify-content: space-between
+                span:last-child
+                    flex-grow: 0.9
+            .dropdown-accessibility
+                position: relative
+                margin-top: 4px
+                .accessibility-btn
+                    padding: 8px 0
+                    display: flex
+                    align-items: center
+                    cursor: pointer
+                    font-size: 14px
+                    span
+                        height: 24px 
+                        color: #aaaaaa
+                        padding-right: 4px
+                    i 
+                        
+                        height: 18px
+                        width: 24px
+                        display: flex
+                        align-items: flex-start
+                        color: #aaaaaa
+                        font-size: 10px
+                .hidden-accessibility__container
+                    background-color: #252525
+                    position: absolute
+                    top: 40px
+                    left:0
+                    z-index: 99
+                    .accessibility__modal
+                        display: flex
+                        flex-direction: column
+                        width: 240px
+                        padding: 8px 0
+                        .accessibility-item
+                            cursor: pointer
+                            display: block
+                            max-height: 48px
+                            a 
+                                display: flex
+                                align-items: center
+                                height: 48px
+                                text-align: left
+                                padding: 0 8px
+                                i 
+                                    width: 24px
+                                    height: 24px
+                                    margin-right: 8px
+                                .accessibility-description
+                                    display: flex
+                                    flex-direction: column
+                                    flex-grow: 1
+                                    justify-self: flex-start
+                                    span 
+                                        font-size: 14px
+                                        color: white
+                                    p 
+                                        font-size: 13px
+                                        margin: 0
+                                        color: #aaaaaa
+
+                        .accessibility-item:hover
+                            background-color: #323232
+                        .accessibility-item.current
+                            background-color: #323232
+            .features__container
+                display: flex
+                justify-content: flex-start
+                align-items: center
+                position: relative
+                left: -8px
+                .features-item
+                    padding: 8px
+                    i 
+                        width: 24px
+                        color: #626262
+                        height: 24px
+
+        .header-author__subcontainer
+            display: flex
+            flex-direction: row
+            flex-grow: 1
+            padding: 16px 0
+            align-items: center
+            a 
+                .author
+                    height: 48px
+                    width: 48px
+                    margin-right: 16px
+                    cursor: pointer
+                    border-radius: 50%
+                    overflow: hidden
+                    img 
+                        max-width: 100%
+                        font-size: 10px
+                        height: 100%
+            span 
+                color: white
+                cursor: pointer
+                line-height: 16px
+                font-size: 14px
+                font-weight: 500
+    .playlist-content__container
+        flex-grow: 1
+        margin: 8px 24px 0 0
+        .list-video
+            width: 100%

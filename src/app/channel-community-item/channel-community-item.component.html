@@ -1,0 +1,22 @@
+<div class="post__container">
+    <div class="post-title">{{post.title}}</div>
+    <div class="post-description">{{post.description}}</div>
+    <div class="post-media">
+        <img src="{{post.media}}" alt="">
+    </div>
+    <div class="features">
+        <div class="feature__item">
+            <a (click)="giveFeedback(true)">
+                <i [inlineSVG] = "'assets/like.svg'" class="{{feedback == 'like' ? 'btn-chosen' : ''}}"></i>
+            </a>
+            <span>{{likesCount}}</span>
+        </div>
+        <div class="feature__item">
+            <a (click)="giveFeedback(false)">
+                <i [inlineSVG]="'assets/dislike.svg'" class="{{feedback == 'dislike' ? 'btn-chosen' : ''}}">
+                </i>
+            </a>
+            <span>{{dislikesCount}}</span>
+        </div>
+    </div>
+</div>

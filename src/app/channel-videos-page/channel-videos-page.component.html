@@ -1,0 +1,36 @@
+<div class="section__container">
+    <div class="section-header">
+        <span>Uploads</span>
+        <div class="features">
+            <i [inlineSVG] = "'assets/menu-alt-left.svg'"></i>
+            <span (click)="toggleShowHideModal($event)">SORT BY</span>
+            <div class="features__container" (click)="$event.stopPropagation()" *ngIf="isShow">
+                <div class="features__modal">
+                    <div class="features-item {{currentFeature == 2 ? 'current' : ''}}">
+                        <a (click)="sortMostPopular()"><span>Most Popular</span></a>
+                    </div>
+                    <div class="features-item {{currentFeature == 1 ? 'current' : ''}}">
+                        <a (click)="sortOldest()"><span>Date added (oldest)</span></a>
+                    </div>
+                    <div class="features-item {{currentFeature == 0 ? 'current' : ''}}">
+                        <a (click)="sortNewest()"><span>Date added (newest)</span></a>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+    <div class="section-details">
+        <div class="video__container">
+            <div class="video__grid">
+                <div *ngFor = "let x of videos; let j = index">
+                    <app-video class="video__component" *ngIf = "j < lastKey" [video]="x">
+                    </app-video>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="end-point"></div>
+
+

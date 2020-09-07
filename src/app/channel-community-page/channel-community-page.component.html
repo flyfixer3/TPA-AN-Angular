@@ -1,0 +1,56 @@
+<div class="section__container">
+    <div class="section-details">
+        <div class="community__container">
+            <div class="community__form">
+                <div class="form-media">
+                    <input type="file" id="post" class="inputfile" (change)="startUploadImage($event.target.files)" >
+                    <label for="post">
+                        <i [inlineSVG]="'assets/add.svg'"></i>
+                    </label>
+                    <img *ngIf="postMedia" src="{{postMedia}}">
+                </div>
+                <div class="form-input">
+                    <div class="form__container">
+                        <fieldset>
+                            <input class ="first" type="text" name="titlePost" [(ngModel)]='inputTitle' required>
+                            <label for="titlePost">Add a title..</label>
+                            <div class="after"></div>
+                        </fieldset>
+                    </div>
+                    <div class="form__container">
+                        <fieldset>
+                            <input class ="first" type="text" name="descriptionPost" [(ngModel)]='inputDescription' required>
+                            <label for="descriptionPost">Add a description..</label>
+                            <div class="after"></div>
+                        </fieldset>
+                    </div>
+                    <div class="submit-btn">
+                        <a class="send-button"(click) ="insertPost()" *ngIf="inputTitle">
+                            create
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="community__grid">
+                <div class="community__header">
+                    <div class="author__detail">
+                        <div class="author">
+                            <a>
+                                <img src="{{userService.getChannelUser().profile_pict}}" alt="">
+                            </a>
+                        </div>
+                    </div>
+                    <div class="description__container">
+                        <div class="name">
+                            <a href="#">{{this.userService.getChannelUser().name}}</a>
+                            <span>diffDate</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="community__detail" *ngFor = "let x of post;">
+                    <app-channel-community-item [post]="x"></app-channel-community-item>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

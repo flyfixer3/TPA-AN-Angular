@@ -1,0 +1,47 @@
+.icons__container {
+  display: flex;
+  height: 35px;
+  width: 200px;
+  padding-right: 1em;
+  justify-content: flex-end;
+}
+.icons__container .icons__features {
+  display: flex;
+  align-items: center;
+  padding-right: 1em;
+}
+.icons__container .icons__features > i {
+  padding: 0em 0.7em;
+}
+.icons__container i {
+  font-style: normal;
+  width: 20px;
+  height: auto;
+  cursor: pointer;
+  color: white;
+}
+.icons__container > i {
+  padding: 0em 0.7em;
+}
+
+img {
+  width: 32px;
+  cursor: pointer;
+  border-radius: 50%;
+  border: 1px solid black;
+}
+
+.sign__container {
+  color: #3ea6ff;
+  display: flex;
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid #3ea6ff;
+  cursor: pointer;
+  outline: none;
+  padding-top: 5px;
+}
+.sign__container i, .sign__container span {
+  color: #3ea6ff;
+  padding: 0px 5.5px;
+}

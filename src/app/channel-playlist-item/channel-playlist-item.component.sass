@@ -1,0 +1,67 @@
+.playlist__container
+    display: flex
+    flex-direction: column
+    .first-thumbnail
+        // margin-bottom: 16px
+        width: 100%
+        height: auto
+        position: relative
+        flex-shrink: 0
+        flex-grow: 0
+        a 
+            cursor: pointer
+            display: block
+            position: relative
+            width: 100%
+            text-decoration-style: solid
+            font-size: 10px
+            div
+                img 
+                    width: 100%
+                    height: 100%
+                    object-fit: cover
+                    display: block
+            .overlays
+                display: flex
+                flex-direction: row
+                position: absolute
+                bottom: 0
+                background-color: rgba(0,0,0,0.8)
+                text-align: center
+                justify-content: center
+                align-items: center
+                width: 100%
+                line-height: 21px
+                font-size: 14px
+                font-weight: 400px
+                color: white
+                i 
+                    margin-right: 8px
+                    width: 24px
+                    height: 24px
+                span 
+                    font-size: 14px
+                    font-weight: 400
+                    text-transform: uppercase
+                    margin-right: 8px
+
+    .playlist-detail
+        padding-top: 10px
+        display: flex
+        flex-direction: column
+        color: #808080
+        font-size: 14px
+        span
+            font-weight: 500
+            font-size: 13px
+        span:first-child
+            color: white
+            font-size: 14px
+        span:nth-child(2)
+            margin-top: 6px
+            font-weight: normal
+        span:last-child
+            margin-top: 3px
+            text-transform: uppercase
+            font-size: 12.5px
+        

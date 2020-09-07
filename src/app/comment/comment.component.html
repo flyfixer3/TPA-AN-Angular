@@ -13,26 +13,41 @@
             <span>{{diffDate}}</span>
         </div>
         <div class="comment_description">
+            <span *ngIf="comment.reply_to">Reply to {{comment.reply_to}}</span>
             {{comment.comment}}
         </div>
         <div class="comment__features">
             <div class="feature__item">
-                <a href="">
-                    <i [inlineSVG] = "'assets/like.svg'"></i>
+                <a (click)="giveFeedback(true)">
+                    <i [inlineSVG] = "'assets/like.svg'" class="{{feedback == 'like' ? 'btn-chosen' : ''}}"></i>
                 </a>
-                <span>0</span>
+                <span>{{likesCount}}</span>
             </div>
             <div class="feature__item">
-                <a href="">
-                    <i [inlineSVG] = "'assets/dislike.svg'"></i>
+                <a (click)="giveFeedback(false)">
+                    <i [inlineSVG]="'assets/dislike.svg'" class="{{feedback == 'dislike' ? 'btn-chosen' : ''}}">
+                    </i>
                 </a>
-                <span>0</span>
+                <span>{{dislikesCount}}</span>
             </div>
-            <div class="feature__item">
-                <span>REPLY</span>
+            <div class="feature__item" *ngIf="userService.getCurrentUser()">
+                <span (click)="showHideReply()">REPLY</span>
             </div>
         </div>
-
     </div>
 </div>
+<div class="form-comment__container" *ngIf="!hide">
+    <a>
+        <img  class= "user-author" src="{{currentUser ? currentUser.profile_pict : 'assets/defaultProfile.png'}}">
+    </a>
+    <fieldset>
+        <input class="first" type="text" name="first" [(ngModel)]='inputComment' required>
+        <label for="first">Add a public comment..</label>
+        <div class="after"></div>
+    </fieldset>
+    <a class="send-button"(click) ="createComment()" >
+        <i *ngIf="inputComment" [inlineSVG]="'assets/send.svg'"></i>
+    </a>
+</div>
+
 

@@ -4,13 +4,35 @@
         <i [inlineSVG] = "'assets/menu-grid.svg'"></i>
         <i [inlineSVG] = "'assets/notification.svg'"></i>
     </div>
-        <img src="{{user.photoUrl}}" alt="">
-    
+    <img (click)="isDropdownShow = !isDropdownShow" src="{{user.photoUrl}}">   
+    <div class="hidden__dropdown" *ngIf="isDropdownShow">
+        <div class="accessibility__modal">
+            <div class="author">
+                <img src="{{user.photoUrl}}">
+                <span>{{user.name}}</span>
+            </div>
+            <div [routerLink]="['/channel/',userService.getCurrentUser().id]">your channel</div>
+            <div>membership</div>
+            <div (click)="signOut();signInWithGoogle()">switch account</div>
+            <div (click)="signOut()">log out</div>
+        </div>
+    </div>
 </div>
 <div *ngIf="!loggedIn" class="icons__container">
-    <i [inlineSVG] = "'assets/overflow-menu.svg'"></i>    
-    <button (click)="signInWithGoogle()" class="sign__container">
+    <i [inlineSVG] = "'assets/overflow-menu.svg'"></i>   
+    <button (click)="toggleModal($event)" class="sign__container">
         <i [inlineSVG] = "'assets/profile.svg'"></i>
         <span>SIGN IN</span>
     </button>
 </div>
+<div class="{{isShow ? 'modal__background--active' : 'modal__background'}}">
+    <div class="modal__container" (click)="$event.stopPropagation()">       
+        <div class="modal__content">
+            <div class="modal__header">Sign in</div>
+            <div class="modal__choosen">
+                <div (click)="toggleModal($event)">No</div>
+                <div  (click)="signInWithGoogle();toggleModal($event)">Yes</div>
+            </div>
+        </div>
+    </div>
+</div>  

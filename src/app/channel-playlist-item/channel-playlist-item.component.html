@@ -1,0 +1,18 @@
+<div class="playlist__container">
+    <div class="first-thumbnail">
+        <a>
+            <div>
+                <img src="{{playlist?.videos[0]?.thumbnail}}" alt="">
+            </div>
+            <div class="overlays">
+                <i [inlineSVG]="'assets/playlist.svg'"></i>
+                <span>{{playlist?.videos?.length}}</span>
+            </div>
+        </a>
+    </div>
+    <div class="playlist-detail">
+        <span>{{playlist.title}}</span>
+        <span>{{diffDate}}</span>
+        <span>View Full Playlist</span>
+    </div>
+</div>

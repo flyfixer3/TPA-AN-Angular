@@ -1,0 +1,48 @@
+.thumbnail {
+  width: 100%;
+  height: auto;
+}
+.thumbnail img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.author {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+}
+.author img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+.details {
+  display: flex;
+  padding-top: 10px;
+  color: white;
+}
+.details .description {
+  display: flex;
+  flex-direction: column;
+}
+.details .description h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+}
+.details .description a {
+  text-decoration: none;
+}
+.details .description a:hover {
+  color: white;
+}
+.details .description a, .details .description span {
+  margin-top: 3px;
+  font-size: 14px;
+  color: grey;
+}

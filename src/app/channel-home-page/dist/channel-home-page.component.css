@@ -1,0 +1,118 @@
+::-webkit-scrollbar {
+  width: 8px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #252525;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #555;
+  border-radius: 10%;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #393939;
+}
+
+.channel-content .channel-container {
+  display: flex;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  color: var(--grey-text);
+  max-width: 72rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 2vw;
+  overflow: hidden;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 0.02;
+  padding-bottom: 40px;
+}
+.container .recent-section {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 0px;
+  border-bottom: 1px solid #252525;
+  overflow-x: auto;
+}
+.container .recent-section .section-title {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 20px;
+}
+.container .recent-section .section-title a {
+  color: #aaaaaa;
+  text-transform: uppercase;
+  font-size: 14px;
+  letter-spacing: 0.009px;
+  cursor: pointer;
+  margin-left: 24px;
+}
+.container .recent-section .section-title a:hover {
+  color: white;
+}
+.container .recent-section .recent-video__details {
+  margin-top: 24px;
+  display: flex;
+  width: 100%;
+}
+.container .recent-section .recent-video__details .thumbnail {
+  width: 424px;
+  height: 238px;
+  margin-right: 24px;
+}
+.container .recent-section .recent-video__details .thumbnail video {
+  width: 100%;
+  height: 100%;
+}
+.container .recent-section .recent-video__details .details {
+  display: flex;
+  flex-direction: column;
+  color: white;
+}
+.container .recent-section .recent-video__details .details .details-header {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 16px;
+}
+.container .recent-section .recent-video__details .details .details-header h3 {
+  margin: 0;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 16px;
+}
+.container .recent-section .recent-video__details .details .details-header span {
+  font-size: 14px;
+  color: grey;
+}
+.container .recent-section .recent-video__details .details .description__container {
+  width: 440px;
+  height: 140px;
+  overflow: hidden;
+}
+.container .recent-section .section-title {
+  position: sticky;
+  left: 0;
+}
+.container .recent-section .video__container {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  flex-wrap: nowrap;
+  margin-top: 24px;
+  margin-bottom: 20px;
+}
+.container .recent-section .video__container div {
+  flex-shrink: 0;
+  width: calc(25% - 10px);
+  margin-right: 12px;
+  cursor: pointer;
+}

@@ -1,0 +1,29 @@
+<div class="video__container">
+    <div *ngIf="playlistVideo" class="priority">
+        <span>{{playlistVideo.priority}}</span>
+    </div>
+    <div class="details__container">
+        <div class="thumbnail">
+            <img src="{{video.thumbnail}}" alt="">
+        </div>
+        <div class="description">
+            <div class="header">
+                <h3>
+                    <span>
+                        {{video.title}}
+                    </span>
+                </h3>
+            </div>
+            <div class="author">
+                <span>{{video.user.name}}</span>
+                <span>{{video.view | shortNumber}} views</span>
+                <span>{{diffDate}}</span>
+            </div>
+            
+            <span>{{video.description}}</span>
+        </div>
+        <div class="features">
+            <i [inlineSVG]="'assets/menu-grid.svg'"></i>
+        </div>
+    </div>
+</div>

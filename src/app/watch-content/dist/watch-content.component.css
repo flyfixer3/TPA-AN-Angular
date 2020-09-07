@@ -1,0 +1,377 @@
+.modal__background, .modal__background--active {
+  opacity: 0;
+  pointer-events: none;
+  position: absolute;
+  transition: opacity 0.2s ease-out;
+}
+
+.modal__background--active {
+  opacity: 1;
+  pointer-events: initial;
+  background-color: rgba(0, 0, 0, 0.8);
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+}
+.modal__background--active .modal__container {
+  background-color: #212121;
+  font-size: 14px;
+  font-weight: 400;
+  margin: 24px 40px;
+  line-height: 20px;
+  max-height: 674px;
+  max-width: 1074px;
+  position: fixed;
+  top: 182px;
+  width: 470px;
+}
+.modal__background--active .modal__container .modal__content {
+  margin: 24px 0;
+  padding: 0 24px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  user-select: none;
+  max-width: 470px;
+}
+.modal__background--active .modal__container .modal__content .modal__header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color: white;
+}
+.modal__background--active .modal__container .modal__content .modal__header span {
+  font-size: 16px;
+  font-weight: 500;
+}
+.modal__background--active .modal__container .modal__content .modal__header div {
+  cursor: pointer;
+}
+.modal__background--active .modal__container .modal__content .modal__header div .x-close {
+  width: 24px;
+  height: 24px;
+  font-size: 13.3px;
+  color: #909090;
+  font-family: Arial;
+}
+.modal__background--active .modal__container .modal__content .modal__header div:hover .x-close {
+  color: white;
+}
+.modal__background--active .modal__container .modal__content .modal__thumbnail {
+  display: flex;
+  align-items: flex-start;
+  color: white;
+  margin: 1px 0px;
+}
+.modal__background--active .modal__container .modal__content .modal__thumbnail div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.modal__background--active .modal__container .modal__content .modal__thumbnail div i {
+  font-size: 13.3px;
+  width: 60px;
+  height: 60px;
+  margin: 0 4px 2px;
+  cursor: pointer;
+}
+.modal__background--active .modal__container .modal__content .modal__link {
+  margin: 1px 0;
+  margin-top: 5px;
+  border: 1px solid #292929;
+  background-color: #1c1c1c;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+.modal__background--active .modal__container .modal__content .modal__link input {
+  margin-left: 16px;
+  padding: 1px 2px;
+  cursor: text;
+  direction: ltr;
+  font-family: Arial;
+  overflow: hidden;
+  word-spacing: 0px;
+  white-space: nowrap;
+  color: white;
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  flex-grow: 1;
+}
+.modal__background--active .modal__container .modal__content .modal__link button {
+  padding: 10px 16px;
+  text-transform: uppercase;
+  font-weight: 500;
+  font-size: 14px;
+  width: 71.95px;
+  font-family: Roboto;
+  text-align: center;
+  letter-spacing: 0.007px;
+  height: 40px;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  border: none;
+  color: #3ea6ff;
+  cursor: pointer;
+}
+.modal__background--active .modal__container .modal__content .modal__start {
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #353535;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+.modal__background--active .modal__container .modal__content .modal__start span:nth-child(2) {
+  padding-left: 16px;
+  color: #aaaaaa;
+}
+.modal__background--active .modal__container .modal__content .modal__start .time {
+  padding: 0 0 0 4px;
+  border: none;
+  background-color: rgba(0, 0, 0, 0);
+  outline: none;
+  size: 14px;
+}
+
+.detail__container {
+  display: flex;
+  flex-direction: row;
+}
+.detail__container .video__container {
+  margin: 0 0 0 24px;
+  padding: 24px 24px 0 0;
+}
+.detail__container .video__container .video-player video {
+  width: 100%;
+}
+.detail__container .video__container .video-detail__container {
+  width: 100%;
+}
+.detail__container .video__container .video-detail__container .video__headline {
+  padding: 20px 0 8px 0;
+  border-bottom: 1px solid #404040;
+}
+.detail__container .video__container .video-detail__container .video__headline h2 {
+  font-size: 18px;
+  color: white;
+  font-weight: 400;
+  line-height: 24px;
+  margin: 0;
+  padding: 0;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container span {
+  font-size: 14px;
+  color: #aaaaaa;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container .video__features {
+  display: flex;
+  flex-direction: row;
+  color: #626262;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container .video__features .btn-chosen {
+  color: #3ea6ff;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container .video__features .feature__item {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container .video__features .feature__item i {
+  width: 20px;
+  height: 20px;
+  padding: 8px;
+  transition: color 0.3s ease-out;
+}
+.detail__container .video__container .video-detail__container .video__headline .features__container .video__features .feature__item span {
+  font-size: 13px;
+  letter-spacing: 0.007px;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-weight: 500;
+}
+.detail__container .video__container .video-detail__container .video__detail {
+  padding-bottom: 16px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #404040;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail {
+  display: flex;
+  padding-top: 16px;
+  margin-bottom: 12px;
+  justify-content: space-between;
+  color: white;
+  align-items: center;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author {
+  height: 48px;
+  display: flex;
+  flex-direction: row;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author img {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+  width: 48px;
+  margin-right: 16px;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author .description {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author .description a {
+  text-decoration: none;
+  color: white;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author .description span {
+  color: #aaaaaa;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .author .description a, .detail__container .video__container .video-detail__container .video__detail .author__detail .author .description span {
+  font-size: 14px;
+}
+.detail__container .video__container .video-detail__container .video__detail .author__detail .subscribe-btn {
+  font-size: 14px;
+  font-weight: 500;
+  color: white;
+  background-color: #cc0000;
+  width: 105px;
+  height: 36px;
+  margin: 0 4px;
+  padding: 10px 16px;
+  border-radius: 2px;
+}
+.detail__container .video__container .video-detail__container .video__detail .description__container {
+  margin-left: 64px;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 21px;
+  color: white;
+}
+.detail__container .video__container .comment__container {
+  color: white;
+}
+.detail__container .video__container .comment__container .comment__features {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 24px;
+}
+.detail__container .video__container .comment__container .comment__features span {
+  margin-right: 32px;
+}
+.detail__container .video__container .comment__container .comment__features .feature__item {
+  display: flex;
+  align-items: center;
+  color: white;
+  cursor: pointer;
+}
+.detail__container .video__container .comment__container .comment__features .feature__item i {
+  width: 24px;
+  height: 24px;
+  margin-right: 8px;
+}
+.detail__container .video__container .comment__container .comment__features .feature__item span {
+  font-size: 14px;
+  letter-spacing: 0.007px;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-weight: 500;
+  line-height: 20px;
+}
+.detail__container .video__container .comment__container .form-comment__container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  margin-bottom: 16px;
+}
+.detail__container .video__container .comment__container .form-comment__container .user-author {
+  border-radius: 50%;
+  object-fit: cover;
+  height: 100%;
+  width: 40px;
+  height: 40px;
+  margin-right: 16px;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset {
+  position: relative;
+  border: none;
+  width: 100%;
+  padding-left: 0px;
+  margin-left: 0;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset .first {
+  background-color: #00000000;
+  border-bottom: 1px solid #404040;
+  color: white;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset label {
+  position: absolute;
+  top: 18px;
+  color: #aaaaaa;
+  transform-origin: left;
+  transition: all 0.3s ease;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset input:focus ~ label {
+  color: red;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset input:focus ~ label,
+.detail__container .video__container .comment__container .form-comment__container fieldset input:valid ~ label {
+  top: 0;
+  transform: scale(0.6, 0.6);
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset input {
+  font-size: 20px;
+  width: 100%;
+  border: none;
+  margin-top: 10px;
+  outline: none;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset .after {
+  width: 100%;
+  height: 1.5px;
+  background: linear-gradient(to right, red 50%, transparent 50%);
+  background-size: 200% 100%;
+  background-position: 100% 0;
+  transition: all 0.6s ease;
+}
+.detail__container .video__container .comment__container .form-comment__container fieldset input:focus ~ .after {
+  background-position: 0 0;
+}
+.detail__container .video__container .comment__container .form-comment__container .send-button:hover > i {
+  color: red;
+  transition: all 0.6s ease;
+}
+.detail__container .video__container .comment__container .form-comment__container .send-button {
+  cursor: pointer;
+  width: 35px;
+  height: 32px;
+  text-decoration: none;
+}
+.detail__container .video__container .comment__container .form-comment__container .send-button i {
+  width: 32px;
+  height: 32px;
+  color: #404040;
+}
+.detail__container .video__container .comment__container .child-comment {
+  margin-left: 56px;
+}
+.detail__container .video__grid {
+  padding: 24px 24px 0 0;
+  width: 600px;
+}
+.detail__container .video__grid div {
+  margin-bottom: 8px;
+}

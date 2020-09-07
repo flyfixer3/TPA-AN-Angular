@@ -1,0 +1,12 @@
+<div class="container" [routerLink]="['/watch/',video.id]">
+    <div class="thumbnail">
+        <img src="{{video.thumbnail}}" alt="">
+    </div>
+    <div class="details">
+        <div class="description">
+            <h3>{{video.title}}</h3>
+            <a href="#">{{video.user.name}}</a>
+            <span>{{video.view | shortNumber}} views &#8226; {{diffDate}}</span>
+        </div>
+    </div>
+</div>

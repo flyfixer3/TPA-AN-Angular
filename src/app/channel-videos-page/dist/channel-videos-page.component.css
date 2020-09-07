@@ -1,0 +1,90 @@
+.section__container {
+  display: flex;
+  flex-direction: column;
+  padding-top: 2.4rem;
+  padding-bottom: 2.4rem;
+  max-width: 72rem;
+  width: 100%;
+  margin: 0 auto;
+  padding: 1.5vw 2vw;
+}
+.section__container .section-header {
+  color: white;
+  font-weight: 500;
+  font-size: 16px;
+  letter-spacing: normal;
+  line-height: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0px;
+}
+.section__container .section-header .features {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  position: relative;
+}
+.section__container .section-header .features i {
+  width: 20px;
+  height: 20px;
+  padding: 8px;
+  transition: color 0.3s ease-out;
+}
+.section__container .section-header .features span {
+  letter-spacing: 0.007px;
+  color: #aaaaaa;
+  cursor: pointer;
+  font-weight: 500;
+}
+.section__container .section-header .features .features__container {
+  background-color: #181818;
+  position: absolute;
+  top: 40px;
+  right: 0;
+}
+.section__container .section-header .features .features__container .features__modal {
+  display: flex;
+  flex-direction: column;
+  width: 170px;
+  padding: 8px 0;
+}
+.section__container .section-header .features .features__container .features__modal .features-item {
+  display: block;
+  max-height: 48px;
+}
+.section__container .section-header .features .features__container .features__modal .features-item a {
+  display: flex;
+  align-items: center;
+  height: 48px;
+  text-align: left;
+}
+.section__container .section-header .features .features__container .features__modal .features-item span {
+  width: 100%;
+  font-weight: 400;
+  line-height: 21px;
+  font-size: 14px;
+  color: #ffffffc0;
+  padding: 0px 16px;
+}
+.section__container .section-header .features .features__container .features__modal .features-item:hover {
+  background-color: #323232;
+}
+.section__container .section-header .features .features__container .features__modal .features-item.current {
+  background-color: #323232;
+}
+.section__container .section-details .video__container {
+  padding-bottom: 24px;
+}
+.section__container .section-details .video__container .video__grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+.section__container .section-details .video__container .video__grid div {
+  display: flex;
+  width: calc(20.5% - 10px);
+  margin-bottom: 32px;
+  cursor: pointer;
+}

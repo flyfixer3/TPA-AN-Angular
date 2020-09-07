@@ -1,0 +1,93 @@
+<div class="playlist-detail__container">
+    <div class="playlist-header__container">
+        <div class="header-details__subcontainer">
+            <div class="first-thumbnail">
+                <a>
+                    <div>
+                        <img src="{{playlist?.videos[0]?.thumbnail}}" alt="">
+                    </div>
+                    <div class="overlays">
+                        <i [inlineSVG]="'assets/play.svg'"></i>
+                        <span>play all</span>
+                    </div>
+                </a>
+            </div>
+            <div class="form__container">
+                <fieldset>
+                    <input #title class="first" type="text" name="first" [(ngModel)]='inputTitle' required>
+                    <label for="first" class="title {{inputTitle ? 'toggle' : ''}}">{{!inputTitle ? playlist?.title : 'New Title'}}</label>
+                    <div class="after {{inputTitle ? 'edit-description': ''}}"></div>
+                </fieldset>
+                <a (click)="updatePlaylist()" class="send-button" *ngIf="inputTitle"><i [inlineSVG]="'assets/send.svg'"></i></a>
+                <a *ngIf="!inputTitle" class="send-button" (click)="toggleEditTitle()"><i [inlineSVG]="'assets/edit.svg'"></i></a>
+            </div>
+            <div class="section-details">
+                <span>
+                    {{playlist?.videos?.length }} videos &#8226; 
+                </span>
+                <span>
+                    {{playlist?.view | shortNumber}} views &#8226;
+                </span>  
+                <span>
+                    {{diffDate}} 
+                </span>
+            </div>
+            <div class="dropdown-accessibility">
+                <div (click)="toggleShowHideModal($event)" class="accessibility-btn">
+                    <span>{{playlist?.private ? 'Private':'Public'}}</span>
+                    <i>&#9660;</i>
+                </div>
+                <div class="hidden-accessibility__container" (click)="$event.stopPropagation()" *ngIf="isShow">
+                    <div class="accessibility__modal">
+                        <div class="accessibility-item {{currentAccess == 1 ? 'current' : ''}}">
+                            <a (click)="setPrivacy(false)">
+                                <i [inlineSVG]="'assets/public.svg'"></i>
+                                <div class="accessibility-description">
+                                    <span>Public</span>
+                                    <p>Anyone can search for and view</p>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="accessibility-item {{currentAccess == 0 ? 'current' : ''}}">
+                            <a (click)="setPrivacy(true)">
+                                <i [inlineSVG]="'assets/private.svg'"></i>
+                                <div class="accessibility-description">
+                                    <span>Private</span>
+                                    <p>Only you can view</p>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="features__container">
+                <div class="features-item">
+                    <i [inlineSVG]="'assets/share.svg'"></i>
+                </div>
+                <div class="features-item">
+                    <i [inlineSVG]="'assets/trash.svg'"></i>
+                </div>
+            </div>
+            <div class="form__container">
+                <fieldset>
+                    <input class="first" type="text" id="oit" [(ngModel)]='inputDescription' required>
+                    <label for="oit" #desc class="description {{inputDescription ? 'toggle' : ''}}">{{!inputDescription ? playlist?.description : 'New Description'}}</label>
+                    <div class="after {{inputDescription ? 'edit-description': ''}}"></div>
+                </fieldset>
+                <a (click)="updatePlaylist()" class="send-button" *ngIf="inputDescription"><i [inlineSVG]="'assets/send.svg'"></i></a>
+                <a *ngIf="!inputDescription" class="send-button" (click)="toggleEditDescription()"><i [inlineSVG]="'assets/edit.svg'"></i></a>
+            </div>
+        </div>
+        <div class="header-author__subcontainer">
+            <a>
+                <div class="author">
+                    <img src="{{playlist?.user?.profile_pict}}">
+                </div>
+            </a>
+            <span>{{playlist?.user?.name}}</span>
+        </div>
+    </div>
+    <div class="playlist-content__container">
+        <app-video-playlist class="list-video"  *ngFor="let x of videos" [video]="x.video"></app-video-playlist>
+    </div>
+</div>

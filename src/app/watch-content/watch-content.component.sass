@@ -1,168 +1,320 @@
-.video__container  
-    .video-player
-        video
-            width: 100%
-    .video-detail__container
-        width: 100%
-        .video__headline
-            padding: 20px 0 8px 0
-            border-bottom: 1px solid #404040
-            h2 
-                font-size: 18px
-                color: white
-                font-weight: 400
-                line-height: 24px
-                margin: 0
-                padding: 0
-            .features__container
+.modal__background
+    opacity: 0
+    pointer-events: none
+    position: absolute  
+    transition: opacity 0.2s ease-out
+.modal__background--active
+    @extend .modal__background
+    opacity: 1
+    pointer-events: initial
+    background-color: rgba(0, 0, 0, 0.8)
+    width: 100%
+    height: 100%
+    position: fixed
+    top: 0
+    left: 0
+    display: flex
+    justify-content: center
+    .modal__container
+        background-color: rgb(33,33,33)
+        font-size: 14px
+        font-weight: 400
+        margin: 24px 40px
+        line-height: 20px
+        max-height: 674px
+        max-width: 1074px
+        position: fixed
+        top: 182px
+        width: 470px
+        .modal__content
+            margin: 24px 0
+            padding: 0 24px
+            display: flex
+            flex-direction: column
+            position: relative
+            user-select: none
+            max-width: 470px
+            .modal__header
                 display: flex
                 flex-direction: row
                 justify-content: space-between
-                align-items: center
+                color: white
                 span 
-                    font-size: 14px
-                    color: #aaaaaa
-                .video__features
-                    display: flex
-                    flex-direction: row
-                    .feature__item
-                        display: flex
-                        align-items: center
-                        color: white
-                        cursor: pointer
-                        i
-                            width: 20px
-                            height: 20px
-                            padding: 8px
-                        span
-                            font-size: 13px
-                            letter-spacing: 0.007px
-                            color: rgb(170,170,170)
-                            cursor: pointer
-                            font-weight: 500
-        .video__detail
-            padding-bottom: 16px
-            margin-bottom: 24px
-            border-bottom: 1px solid #404040
-            .author__detail
-                display: flex
-                padding-top: 16px
-                margin-bottom: 12px
-                justify-content: space-between
-                color: white
-                align-items: center
-                .author
-                    height: 48px
-                    display: flex
-                    flex-direction: row
-                    img
-                        border-radius: 50%
-                        object-fit: cover
-                        height: 100%
-                        width: 48px
-                        margin-right: 16px
-                    .description
-                        display: flex
-                        flex-direction: column
-                        justify-content: center            
-                        a 
-                            text-decoration: none
-                            color: white 
-                        span 
-                            color: #aaaaaa
-                        a,span 
-                            font-size: 14px
-                            
-                .subscribe-btn
-                    font-size: 14px
+                    font-size: 16px
                     font-weight: 500
-                    color: white
-                    background-color: #cc0000
-                    width: 105px
-                    height: 36px
-                    margin: 0 4px
-                    padding: 10px 16px
-                    border-radius: 2px
-                    
-            .description__container
-                margin-left: 64px
-                font-size: 14px
-                font-weight: 400
-                line-height: 21px
-                color: white
-    .comment__container
-        color: white
-        .comment__features
-            display: flex
-            flex-direction: row
-            margin-bottom: 24px
-            span 
-                margin-right: 32px
-            .feature__item
-                display: flex
-                align-items: center
-                color: white
-                cursor: pointer
-                i
-                    width: 24px
-                    height: 24px
-                    margin-right: 8px
-                span
-                    font-size: 14px
-                    letter-spacing: 0.007px
-                    color: rgb(170,170,170)
+                div
                     cursor: pointer
-                    font-weight: 500    
-                    line-height: 20px  
-
-        .form-comment__container
-            display: flex
-            flex-direction: row 
-            width: 100%  
-            margin-bottom: 16px 
-            .user-author
-                border-radius: 50%
-                object-fit: cover
-                height: 100%
-                width: 24px
-                height: 24px
-                margin-right: 16px
-            fieldset 
-                position: relative
-                border: none
-                #first
-                    background-color: #00000000
-                    border-bottom: 1px solid #404040
-                    color: white
-                label 
-                    position: absolute 
-                    top: 18px
-                    color: #aaaaaa
-                    transform-origin: left
-                    transition: all 0.3s ease
-                input:focus ~ label 
-                    color: red 
-                input:focus ~ label,
-                input:valid ~ label 
-                    top: 0
-                    transform: scale(0.6, 0.6)
+                    .x-close
+                        width: 24px
+                        height: 24px
+                        font-size: 13.3px
+                        color: #909090
+                        font-family: Arial
+                div:hover
+                    .x-close
+                        color: white
+            .modal__thumbnail
+                display: flex
+                align-items: flex-start
+                color: white
+                margin: 1px 0px
+                div 
+                    display: flex
+                    flex-direction: column
+                    align-items: center
+                    i 
+                        font-size: 13.3px
+                        width: 60px
+                        height: 60px
+                        margin: 0 4px 2px
+                        cursor: pointer
+            .modal__link
+                margin: 1px 0
+                margin-top: 5px
+                border: 1px solid rgb(41,41,41)
+                background-color: rgb(28,28,28)
+                border-radius: 2px
+                display: flex
+                flex-direction: row
+                align-items: center
+                justify-content: space-between
                 input 
-                    font-size: 20px  
-                    width: 100%
-                    border: none  
-                    margin-top: 10px
-                input:focus
+                    margin-left: 16px
+                    padding: 1px 2px
+                    cursor: text
+                    direction: ltr
+                    font-family: Arial 
+                    overflow: hidden
+                    word-spacing: 0px
+                    white-space: nowrap
+                    color: white
+                    background-color: rgba(0, 0, 0, 0)
+                    border: none
+                    flex-grow: 1
+                button
+                    padding: 10px 16px
+                    text-transform: uppercase
+                    font-weight: 500
+                    font-size: 14px
+                    width: 71.95px
+                    font-family: Roboto
+                    text-align: center
+                    letter-spacing: 0.007px
+                    height: 40px
+                    background-color: rgba(0, 0, 0, 0)
                     outline: none
-                .after 
-                    width: 100%
-                    height: 3px
-                    background: linear-gradient(to right, red 50%, transparent 50%)
-                    background-size: 200% 100%
-                    background-position: 100% 0
-                    transition: all 0.6s ease
-                input:focus ~ .after 
-                    background-position: 0 0
-                
+                    border: none
+                    color: rgb(62, 166, 255)
+                    cursor: pointer
+            .modal__start
+                margin-top: 24px
+                padding-top: 24px
+                border-top: 1px solid #353535
+                display: flex
+                flex-direction: row
+                align-items: center             
+                span:nth-child(2)
+                    padding-left: 16px
+                    color: #aaaaaa
+                .time
+                    padding: 0 0 0 4px
+                    border: none
+                    background-color: rgba(0, 0, 0, 0)
+                    outline: none
+                    size: 14px
+.detail__container
+    display: flex
+    flex-direction: row
+    .video__container  
+        margin: 0 0 0 24px
+        padding: 24px 24px 0 0
+        .video-player
+            video
+                width: 100%
+        .video-detail__container
+            width: 100%
+            .video__headline
+                padding: 20px 0 8px 0
+                border-bottom: 1px solid #404040
+                h2 
+                    font-size: 18px
+                    color: white
+                    font-weight: 400
+                    line-height: 24px
+                    margin: 0
+                    padding: 0
+                .features__container
+                    display: flex
+                    flex-direction: row
+                    justify-content: space-between
+                    align-items: center
+                    span 
+                        font-size: 14px
+                        color: #aaaaaa
+                    .video__features
+                        display: flex
+                        flex-direction: row
+                        color: #626262
+                        .btn-chosen
+                            color: rgb(62, 166, 255)
+                        .feature__item
+                            display: flex
+                            align-items: center
+                            cursor: pointer
+                            i
+                                width: 20px
+                                height: 20px
+                                padding: 8px
+                                transition: color 0.3s ease-out
+                        
+                            span
+                                font-size: 13px
+                                letter-spacing: 0.007px
+                                color: rgb(170,170,170)
+                                cursor: pointer
+                                font-weight: 500
+            .video__detail
+                padding-bottom: 16px
+                margin-bottom: 24px
+                border-bottom: 1px solid #404040
+                .author__detail
+                    display: flex
+                    padding-top: 16px
+                    margin-bottom: 12px
+                    justify-content: space-between
+                    color: white
+                    align-items: center
+                    .author
+                        height: 48px
+                        display: flex
+                        flex-direction: row
+                        img
+                            border-radius: 50%
+                            object-fit: cover
+                            height: 100%
+                            width: 48px
+                            margin-right: 16px
+                        .description
+                            display: flex
+                            flex-direction: column
+                            justify-content: center            
+                            a 
+                                text-decoration: none
+                                color: white 
+                            span 
+                                color: #aaaaaa
+                            a,span 
+                                font-size: 14px
+                                
+                    .subscribe-btn
+                        font-size: 14px
+                        font-weight: 500
+                        color: white
+                        background-color: #cc0000
+                        width: 105px
+                        height: 36px
+                        margin: 0 4px
+                        padding: 10px 16px
+                        border-radius: 2px
+                        
+                .description__container
+                    margin-left: 64px
+                    font-size: 14px
+                    font-weight: 400
+                    line-height: 21px
+                    color: white
+        .comment__container
+            color: white
+            .comment__features
+                display: flex
+                flex-direction: row
+                margin-bottom: 24px
+                span 
+                    margin-right: 32px
+                .feature__item
+                    display: flex
+                    align-items: center
+                    color: white
+                    cursor: pointer
+                    i
+                        width: 24px
+                        height: 24px
+                        margin-right: 8px
+                    span
+                        font-size: 14px
+                        letter-spacing: 0.007px
+                        color: rgb(170,170,170)
+                        cursor: pointer
+                        font-weight: 500    
+                        line-height: 20px  
 
-        .child-comment
-            margin-left: 56px
+            .form-comment__container
+                display: flex
+                flex-direction: row 
+                align-items: center
+                width: 100%  
+                margin-bottom: 16px 
+                .user-author
+                    border-radius: 50%
+                    object-fit: cover
+                    height: 100%
+                    width: 40px
+                    height: 40px
+                    margin-right: 16px
+                fieldset 
+                    position: relative
+                    border: none
+                    width: 100%
+                    padding-left: 0px
+                    margin-left: 0
+                    .first
+                        background-color: #00000000
+                        border-bottom: 1px solid #404040
+                        color: white
+                    label 
+                        position: absolute 
+                        top: 18px
+                        color: #aaaaaa
+                        transform-origin: left
+                        transition: all 0.3s ease
+                    input:focus ~ label 
+                        color: red 
+                    input:focus ~ label,
+                    input:valid ~ label 
+                        top: 0
+                        transform: scale(0.6, 0.6)
+                    input 
+                        font-size: 20px  
+                        width: 100%
+                        border: none  
+                        margin-top: 10px
+                        outline: none
+                    .after 
+                        width: 100%
+                        height: 1.5px
+                        background: linear-gradient(to right, red 50%, transparent 50%)
+                        background-size: 200% 100%
+                        background-position: 100% 0
+                        transition: all 0.6s ease
+                    input:focus ~ .after 
+                        background-position: 0 0
+                .send-button:hover>i
+                    color: red 
+                    transition: all 0.6s ease
+                .send-button
+                    cursor: pointer
+                    width: 35px
+                    height: 32px
+                    text-decoration: none
+                    i 
+                        width: 32px
+                        height: 32px
+                        color: #404040
+
+            .child-comment
+                margin-left: 56px
+    .video__grid
+        padding: 24px 24px 0 0
+        width: 600px
+        div 
+            margin-bottom: 8px

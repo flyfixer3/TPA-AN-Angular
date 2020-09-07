@@ -1,5 +1,8 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
-
+import { UserService } from '../user.service';
+import { PlaylistsServiceService } from '../playlists-service.service';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
 @Component({
   selector: 'app-side-bar',
   templateUrl: './side-bar.component.html',
@@ -8,13 +11,49 @@ import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 export class SideBarComponent implements OnInit {
 
   @Output() onIconClick = new EventEmitter<boolean>();
-
+  playlists:any[]
+  savePlaylists:any[]
   toogleSideBar(){
-    // this.hide = true;
     this.onIconClick.emit(true);
   }
-
-  constructor() { }
+  currentUser:{
+    id:String
+    name:String
+    profile_pict:String
+    email:String
+    channel_background:String
+    premium:boolean
+    subscribers:{
+      id:String
+      target_id:String
+      target:any
+      subscriber_id:String
+      notification:Boolean
+    }[]
+  }
+  constructor(private userService:UserService,private apollo:Apollo, private playlistService:PlaylistsServiceService) {
+    userService.currentUserValueChange.subscribe((user)=>{
+      this.currentUser = user
+      console.log(this.currentUser)
+      this.playlists = this.playlistService.getPlaylistsByUserId(this.currentUser.id.toString())
+    })
+    this.playlistService.playlistsValueChange.subscribe(()=>{
+      if(this.currentUser){
+        this.playlists = this.playlistService.getPlaylistsByUserId(this.currentUser.id.toString())
+      }
+    })
+   }
+   getAllCurrentUserPlaylists(userID:String){
+    this.apollo.watchQuery<any>({
+      query: queryGetAllCurrentUserPlaylist,
+      variables:{
+        id:userID
+      }
+    }).valueChanges.subscribe((result)=>{
+      this.playlistService.setPlaylists(result.data.findPlaylistByUserId)
+      this.savePlaylists = this.userService.getCurrentUser()?.save_playlists
+    })
+   }
   items_main = [
     {
       svg_path:'assets/home.svg',
@@ -62,6 +101,36 @@ export class SideBarComponent implements OnInit {
     
   ]
   ngOnInit(): void {
+    this.getAllCurrentUserPlaylists("")
+    this.currentUser = this.userService.getCurrentUser()
   }
-
+  setChannelUser(user:any){
+    this.userService.setChannelUser(user)
+  }
 }
+
+export const queryGetAllCurrentUserPlaylist = gql
+`query getPlaylistByUserId($id: String!){
+    findPlaylistByUserId(id:$id){
+      id
+      title
+      description
+      private
+      view
+      updated_at
+      user{
+        id
+        profile_pict
+        name
+      }
+      videos{
+        id
+        title
+        thumbnail
+        user{
+          id
+          name
+        }
+      }
+    }
+  }`
